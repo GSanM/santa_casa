@@ -1,0 +1,125 @@
+/*Fontes
+
+font-family: 'Exo', sans-serif;
+font-family: 'Abril Fatface', cursive;
+font-family: 'Archivo Narrow', sans-serif;
+font-family: 'Amatic SC', cursive;
+font-family: 'Anton', sans-serif;
+font-family: 'Lobster', cursive;
+font-family: 'Josefin Sans', sans-serif;
+
+*/
+* {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+body {
+    background-color: whitesmoke !important;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Lobster', sans-serif !important;
+}
+
+.border {
+    border: 2px solid rgb(81, 231, 231);
+    border-radius: 15px;
+    
+    padding: 20px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+/*Radio-buttons*/
+div.btn-group {
+    margin-top: 20px;
+}
+
+div#pac-doc {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+input[type="radio"] {
+    margin: 0;
+    visibility: hidden;
+}
+
+input[type=radio]:checked + span {
+    color: black;
+}
+
+/*----------------------------------------*/
+
+input#name, input#age {
+    margin-bottom: 5px;
+}
+
+.btn.btn-default:hover {
+    background-color: rgba(81, 231, 231, 0.377);
+}
+
+.btn.btn-default {
+    border-radius: 20px;
+    border: 0;
+    background-color: rgb(81, 231, 231);
+    color: white;
+    font-weight: bold;
+}
+
+div.submit-button {
+    margin-top: 10px;
+    text-align: center;
+}
+
+div#submit-agenda {
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;   
+}
+
+div.input-group {
+    margin-bottom: 5px;
+}
+
+input#email, input#password, input#address, input#name, input#age, input#cpf, input#phone {
+     
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/*Center Image*/
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    width: 20%;
+}
+
+div#cadastrar-se {
+    text-align: center;
+    margin-top: 10px;
+}
+
+a#cadastrar-se {
+    color: black;
+}
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none !important;
+}
+
+img#cadastro-paciente {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10%;
+}
+
+div#borda-cadastro {
+    margin-top: 20px;
+}
