@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond $1 !^(index\.php|phpinfo\.php|images|robots\.txt|sitemap\.xml\.gz|sitemap\.xml|assets)
+RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>
