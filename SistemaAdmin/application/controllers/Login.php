@@ -20,8 +20,10 @@ class Login extends CI_Controller {
         $senha   = $_POST['password'];
 
         if($usuario == 'admin' && $senha == 'admin') {
+            
             $this->load->view('index');
         } else {
+            header(base_url(''));
             $dados['mensagem'] = "Usuário ou Senha inválidos";
             $this->load->view('login', $dados);
         }
