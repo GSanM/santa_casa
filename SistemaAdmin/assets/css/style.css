@@ -20,6 +20,30 @@ input[type=date], select{padding:8px}
 ul ,li{list-style:none;}
 
 
+
+.formulario {
+	width: 50%;
+	margin: 0 auto;
+}
+
+#btnSubmit{
+	background-color: black;
+	color: white;
+}
+
+.cor {
+	background:rgb(114, 180, 158);
+}
+
+.alerta {
+	background-color: rgb(255, 176, 176);
+	color: rgb(194, 43, 43);
+	margin: 10px;
+	padding: 10px;
+	border-radius: 10px;
+	font-size: 15px;
+}
+
 .conteudo{
 	width:960px;
 	left:50%;
@@ -40,11 +64,12 @@ ul ,li{list-style:none;}
 	box-shadow:0 0px 7px 0 #444;	
 }	
 .base-topo{
-    text-align: center;
-	width:100%;
-	float:left;
-	padding:20px 40px;
-	background:rgb(91, 181, 255);
+	font-size: 25px;
+	text-align: center;
+	width: 100%;
+	margin: auto;
+	padding: 25px;
+	background:rgb(114, 180, 158);
 	border-radius:5px 5px 0 0;
 	-webkit-border-radius:5px 5px 0 0;
 	-moz-border-radius:5px 5px 0 0;
@@ -106,7 +131,7 @@ ul ,li{list-style:none;}
 	color:#ddd;
 }
 .menu li a:hover{
-	color:#FFBB1E;
+	color:rgb(114, 180, 158);
 }
 
 /*base-home*/
@@ -122,15 +147,6 @@ ul ,li{list-style:none;}
 	font-weight:inherit;
 	font-size:1.4em;
 	text-transform:uppercase;
-}
-.titulo:before{
-	content:url(../img/ico-seta-ttl.png);
-	padding-right:10px;
-}
-.titulo .cor{
-	color:#FFBB1E;
-	position:relative;
-	top:-3px;
 }
 
 .base-home .base-colunas{
@@ -347,3 +363,30 @@ ul ,li{list-style:none;}
 	position:relative;
 	top:2px;
 }
+
+
+table {
+	width: 800px;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(17, 1, 1, 0.123);
+	color: #000;
+	margin: 30px auto;
+
+}
+
+thead {
+	background-color: rgb(0, 0, 0);
+	color: white;
+}
+
+th, td {
+	padding: 15px;
+	background-color: rgba(255, 255, 255, 0.2);
+
+}
+
+th {
+	text-align: left;
+}
+
