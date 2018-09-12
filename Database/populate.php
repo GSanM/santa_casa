@@ -1,18 +1,6 @@
 <?php
 
-function connect($servername, $username, $password, $dbname)
-{
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    } 
-    echo "Connected successfully";
-
-    return $conn;
-}
+require_once "connectDB.php";
 
 function populate_clinica($conn)
 {
@@ -48,7 +36,7 @@ function populate_atendente()
 
 }
 
-$conn = connect("localhost", "root", "Dijkstra", "santa_casa");
+$conn = connectToDB('root', 'Dijkstra');
 
 //populate_clinica($conn);
 populate_client($conn);
