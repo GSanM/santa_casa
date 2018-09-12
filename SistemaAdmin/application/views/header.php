@@ -16,7 +16,7 @@
 		
 		<nav class="menu">
             <ul>
-                <li><a href="<?php echo base_url('')?>">Home</a></li>
+                <li><a href="<?php echo base_url('index')?>">Home</a></li>
                 <li><a href="<?php echo base_url('cadastro')?>">Cadastrar nova Clínica</a></li>
                 <li><a href="<?php echo base_url('listagem')?>">Listar Clínicas</a></li>
                 <li><a href="<?php echo base_url('edicao')?>">Editar</a></li>
