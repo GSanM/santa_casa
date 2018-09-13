@@ -9,6 +9,7 @@ class Atendente
     function __construct()
     {
         $this->$conn = connectToDB('root', 'Dijkstra');
+        $this->$conn->set_charset("utf8");
     }
 
     // ADICIONA
@@ -19,9 +20,9 @@ class Atendente
         return submit($this->$conn, $sql);
     }
 
-    public function adicionaMedico($crm, $cpf, $nome, $data_nas, $email, $end, $tel, $especialidade, $senha, $cnpj_clinica)
+    public function adicionaMedico($crm, $cpf, $nome, $data_nas, $email, $end, $tel, $especialidade, $senha)
     {
-        $sql = "INSERT INTO medico VALUES ($crm, $cpf, $nome, $data_nas, $email, $end, $tel, $especialidade, $senha, $cnpj_clinica)";
+        $sql = "INSERT INTO medico VALUES ($crm, $cpf, $nome, $data_nas, $email, $end, $tel, $especialidade, $senha)";
        
         return submit($this->$conn, $sql);
     }
@@ -37,13 +38,6 @@ class Atendente
     public function alteraPaciente($cpf, $nome, $data_nas, $email, $end, $tel, $senha)
     {   
         $sql = "UPDATE paciente SET nome=$nome, data_nas=$data_nas, email=$email, endereco=$end, telefone=$tel, senha=$senha WHERE cpf = $cpf";
-       
-        return submit($this->$conn, $sql);
-    }
-
-    public function alteraMedico($crm, $cpf, $nome, $data_nas, $email, $end, $tel, $especialidade, $senha, $cnpj_clinica)
-    {
-        $sql = "UPDATE medico SET nome=$nome, data_nas=$data_nas, email=$email, endereco=$end, telefone=$tel, especialidade=$especialidade, senha=$senha, cnpj_clinica=$cnpj_clinica WHERE crm = $crm";
        
         return submit($this->$conn, $sql);
     }

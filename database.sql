@@ -31,9 +31,7 @@ CREATE TABLE medico (	crm BIGINT,
                         telefone VARCHAR(50),
                         especialidade VARCHAR(30),
                         senha VARCHAR(256),
-                        cnpj_clinica BIGINT,
-						PRIMARY KEY (crm),
-                        FOREIGN KEY (cnpj_clinica) REFERENCES clinica(cnpj)
+						PRIMARY KEY (crm)
 );
 
 #Cria tabela atendente
@@ -42,9 +40,7 @@ CREATE TABLE atendente (cpf BIGINT,
                         email VARCHAR(100),
                         endereco VARCHAR(100),
                         telefone VARCHAR(50),
-                        cnpj_clinica BIGINT,
-						PRIMARY KEY (cpf),
-                        FOREIGN KEY (cnpj_clinica) REFERENCES clinica(cnpj)
+						PRIMARY KEY (cpf)
 );
 
 #Cria tabela de consultas
@@ -58,6 +54,13 @@ CREATE TABLE consulta ( id INTEGER NOT NULL AUTO_INCREMENT,
                         FOREIGN KEY (crm_medico) REFERENCES medico(crm),
                         FOREIGN KEY (cpf_paciente) REFERENCES paciente(cpf),
                         FOREIGN KEY (clinica) REFERENCES clinica(cnpj)
+);
+
+#Cria tabela admin
+CREATE TABLE admin (	id INT NOT NULL AUTO_INCREMENT,
+						usuario VARCHAR(30),
+						senha VARCHAR(30),
+                        PRIMARY KEY (id)
 );
 
 #Cria tabela de horarios
