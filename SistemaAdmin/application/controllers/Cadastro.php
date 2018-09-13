@@ -37,18 +37,18 @@ class Cadastro extends CI_Controller {
 		$this->form_validation->set_rules("txtNomeGerente", "Nome do Gerente", "required");
 		$this->form_validation->set_rules("cpfGerente", "CPF do Gerente", "required");
 
-		if($this->form_validation->run()) {
-			$this->load->model('Clinica_model');
-			
-			$this->Clinica_model->inserir_registro();
-			
-			// Chamando a View de cadastro realizado com sucesso
-			$this->cadastrado_sucesso();
-		
-		} else {
+		if($this->form_validation->run() == FALSE) {
 			$this->index();
+			return;
 		}
-
+	
+		$this->load->model('Clinica_model');
+		
+		$this->Clinica_model->inserir_registro();
+		
+		// Chamando a View de cadastro realizado com sucesso
+		$this->cadastrado_sucesso();
+	
 	}
 
 	/**
