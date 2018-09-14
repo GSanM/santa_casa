@@ -44,13 +44,12 @@ CREATE TABLE atendente (cpf BIGINT,
 );
 
 #Cria tabela de consultas
-CREATE TABLE consulta ( id INTEGER NOT NULL AUTO_INCREMENT,
-						crm_medico BIGINT,
+CREATE TABLE consulta ( crm_medico BIGINT,
                         cpf_paciente BIGINT,
-                        horario VARCHAR(6),
+                        horario TIME,
                         data DATE,
                         clinica BIGINT,
-                        PRIMARY KEY (id),
+                        PRIMARY KEY (data, horario),
                         FOREIGN KEY (crm_medico) REFERENCES medico(crm),
                         FOREIGN KEY (cpf_paciente) REFERENCES paciente(cpf),
                         FOREIGN KEY (clinica) REFERENCES clinica(cnpj)

@@ -12,8 +12,7 @@ function connectToDB($username, $password)
     // Verifica conexão
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
-    } 
-    echo "Connected successfully";
+    }
 
     return $conn;
 }
@@ -23,7 +22,6 @@ function submit($conn, $sql)
 {
     if ($conn->query($sql) === TRUE) 
     {
-        echo "Success";
         return 1;
     } 
     else 

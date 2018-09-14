@@ -26,41 +26,66 @@ class Medico
         $result = $this->$conn->query($sql);
         if ($result->num_rows > 0)
         {   
-            $i = 0;
-            while($i < $result->num_rows)
+            echo '  <head>
+                        <link rel="stylesheet" type="text/css" href="table.css">
+                    </head>';
+            echo '<table class="table-fill">
+                    <thead>
+                        <tr>
+                            <th class="text-left">Data</th>
+                            <th class="text-left">Hora</th>
+                            <th class="text-left">Paciente</th>
+                            <th class="text-left">Clínica</th>
+                        </tr>
+                    </thead>';
+    
+            while($row = $result->fetch_assoc())
             {
+                $data =  $row['data'];
+                $hora =  $row['horario'];
+                $paciente = $row['cpf_paciente'];
+                $clinica = $row['clinica'];
+
+                echo "<tbody class=\"table-hover\">
+                        <tr>
+                            <td>$data</td>
+                            <td>$hora</td>";
+                
                 //Procura nome do cliente pelo CPF
-                $paciente = $result->fetch_assoc()['cpf_paciente'];
-                
                 $sql2 = "SELECT nome FROM paciente WHERE cpf = $paciente";
-                
                 $result2 = $this->$conn->query($sql2);
+                
                 if ($result2->num_rows > 0)
                 {
-                    echo $result2->fetch_assoc()['nome'];
+                    $nome_paciente = $result2->fetch_assoc()['nome'];
+                    echo "<td class=\"text-left\">$nome_paciente</td>";
                 }
                 else
                 {
-                    echo "Cliente não encontrado.";
+                    echo "Paciente não encontrado.";
                 }
+                $result2->close();
                 
                 //Procura nome da clinica pelo CNPJ
-                $result = $this->$conn->query($sql);
-
-                $clinica = $result->fetch_assoc()['clinica'];
                 $sql3 = "SELECT nome FROM clinica WHERE cnpj = $clinica";
                 
                 $result3 = $this->$conn->query($sql3);
                 if ($result3->num_rows > 0)
                 {
-                    echo $result3->fetch_assoc()['nome'];
+                    $nome_clinica = $result3->fetch_assoc()['nome'];
+                    echo "<td class=\"text-left\">$nome_clinica</td>";
                 }
                 else
                 {
                     echo "Clinica não encontrada.";
                 }
-                $i += 1;
-            }   
+                $result3->close();
+                
+                echo '</tr>';
+            }
+            $result->close();
+            echo '</tbody>
+                </table>';  
         }
         else
         {
