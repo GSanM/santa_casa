@@ -167,7 +167,7 @@
 						<button class="btn btn-default" id="agendar">Agendar</button>
 						<button class="btn btn-default" id="alterar-consulta">Alterar</button>
 						<button type="submit" class="btn btn-default" id="confirmar-consulta" onclick="ajaxPost('../server/mostrarConsultasPendentes.php', '#resultado-consulta-pendente')">Confirmar</button>
-						<button class="btn btn-default" id="ver-agenda-medico">Medico</button>
+						<button class="btn btn-default" id="ver-agenda-medico" onclick="ajaxPost('../server/verTodosMedicos.php', '#result-verAgenda')">Medico</button>
 						<button class="btn btn-default" id="ver-agenda-paciente">Paciente</button>
 					</div>
 
@@ -284,7 +284,11 @@
 					<div class="collapse" id="resultado-consulta-pendente"></div>
 
 					<div class="collapse" id="ver-agenda-medico-div">
-						<h3>Ver agenda de médicos</h3>
+						<h3>Médicos Cadastrados no Sistema</h3>
+						<br>
+						<div id="result-verAgenda"></div>
+						<br><br>
+						
 						<form name="form_verAgenda" id="form_verAgendaMedico" onsubmit="return false;">
 							<!--Nome Médico-->
 							<div class="input-group">
@@ -297,10 +301,9 @@
 								<button type="submit" class="btn btn-default" id="btnVerAgenda" onclick="ajaxPost('../server/verAgendaSimplificadaMedico.php', '#result-verAgenda')">Buscar</button>
 							</div>
 						</form>
-						<div id="result-verAgenda"></div>
 
-
-
+						</form>
+						
 					</div>
 
 					<div class="collapse" id="ver-agenda-paciente-div">
