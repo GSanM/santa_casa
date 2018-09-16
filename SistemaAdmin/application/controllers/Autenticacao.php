@@ -30,8 +30,8 @@ class Autenticacao extends CI_Controller {
             return;
         } 
 
-        $data = array ( 'username' => $this->input->post('username'),
-                        'password' => $this->input->post('password'));
+        $data = array ( 'usuario' => $this->input->post('username'),
+                        'senha'   => $this->input->post('password'));
                         
         $result = $this->login_database->login($data);
 
@@ -41,16 +41,19 @@ class Autenticacao extends CI_Controller {
             return;
         }
         
-        $username = $this->input->post('username');
+        $username      = $this->input->post('username');
         $dados_usuario = $this->login_database->read_user_information($username);
         
-        if ($dados_usuario == TRUE) {
-            $session_data = array('username' => $dados_usuario[0]->username);
-
-            // Adicionar dados do usuario na Session
-            $this->session->set_userdata('logged_in', $session_data);
-            $this->load->view('index');
+        if ($dados_usuario == FALSE) {
+            return;
         }
+
+        $session_data = array('usuario' => $dados_usuario[0]->usuario);
+
+        // Adicionar dados do usuario na Session
+        $this->session->set_userdata('logged_in', $session_data);
+        $this->load->view('index');
+    
         
         
     }

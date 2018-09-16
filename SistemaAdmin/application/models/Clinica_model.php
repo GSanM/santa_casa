@@ -9,9 +9,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Clinica_model extends CI_Model {
 
-    public $nome_clinica;
+    public $nome;
     public $nome_gerente;
-    public $cpf_gerente;
+    public $cnpj;
+    public $endereco;
+    public $telefone;
 
     public function __construct() {
         parent::__construct();
@@ -24,9 +26,11 @@ class Clinica_model extends CI_Model {
      * @return void
       */
     public function inserir_registro() {
-        $this->nome_clinica = $_POST['txtNomeClinica'];
+        $this->nome         = $_POST['txtNomeClinica'];
         $this->nome_gerente = $_POST['txtNomeGerente'];
-        $this->cpf_gerente  = $_POST['cpfGerente'];
+        $this->cnpj         = $_POST['cnpj'];
+        $this->endereco     = $_POST['endereco'];
+        $this->telefone     = $_POST['telefone'];
 
         $this->db->insert('clinica', $this);
     }

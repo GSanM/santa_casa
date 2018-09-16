@@ -4,17 +4,21 @@
             
         <?php 
             echo "<table><thead><tr>";
-            echo "<th>Nome da Clinica</th>";
-            echo "<th>Nome do Gerente</th>";
-            echo "<th>CPF do Gerente</th>";
+            echo "<th>Clinica</th>";
+            echo "<th>Gerente</th>";
+            echo "<th>CNPJ</th>";
+            echo "<th>Endereco</th>";
+            echo "<th>Telefone</th>";
             echo "</tr></thead>";
 
             echo "<tbody>";
             foreach($resultado as $result) { 
                 echo "<tr>";
-                echo "<td>$result->nome_clinica</td>";
+                echo "<td>$result->nome</td>";
                 echo "<td>$result->nome_gerente</td>";
-                echo "<td>$result->cpf_gerente</td>";
+                echo "<td>$result->cnpj</td>";
+                echo "<td>$result->endereco</td>";
+                echo "<td>$result->telefone</td>";
                 echo "</tr>";
             }
             echo "</tbody>";

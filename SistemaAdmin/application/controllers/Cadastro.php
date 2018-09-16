@@ -35,7 +35,9 @@ class Cadastro extends CI_Controller {
 
 		$this->form_validation->set_rules("txtNomeClinica", "Nome da Clinica", "required");
 		$this->form_validation->set_rules("txtNomeGerente", "Nome do Gerente", "required");
-		$this->form_validation->set_rules("cpfGerente", "CPF do Gerente", "required");
+		$this->form_validation->set_rules("cnpj", "CNPJ", "required");
+		$this->form_validation->set_rules("endereco", "Endereco", "required");
+		$this->form_validation->set_rules("telefone", "Telefone", "required");
 
 		if($this->form_validation->run() == FALSE) {
 			$this->index();
@@ -48,7 +50,6 @@ class Cadastro extends CI_Controller {
 		
 		// Chamando a View de cadastro realizado com sucesso
 		$this->cadastrado_sucesso();
-	
 	}
 
 	/**
