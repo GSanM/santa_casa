@@ -15,7 +15,9 @@ class Autenticacao extends CI_Controller {
         $this->load->model('loginDatabaseAdmin_model');
         $this->load->model('loginDatabaseMedico_model');
         $this->load->model('loginDatabasePaciente_model');
-        
+        $this->load->model('Medico_model');
+        $this->load->model('Paciente_model');
+        $this->load->model('Consulta_model');
     }
 
 	public function index() {
@@ -56,28 +58,32 @@ class Autenticacao extends CI_Controller {
         
         $username = $this->input->post('username');
         
-  
+        //PEGAR AS INFORMACOES DE QUEM ESTÁ LOGADO//
 
-        $session_data = array('logadoComo' => $usuarioLogadoComo);
 
-        // Adicionar dados do usuario na Session
-        $this->session->set_userdata('logged_in', $session_data);
 
-        if($usuarioLogadoComo == "admin")
-            $this->load->view('index');
 
-        else if ($usuarioLogadoComo == "medico")
-            $this->load->view('medico');
+        if($usuarioLogadoComo == "admin") {
 
-        else
-            $this->load->view('paciente');
-    
+            $this->load->view('admin/index');
+        }
+        else if ($usuarioLogadoComo == "medico") {
+
+            $dados_usuario = $this->Medico_model->get_informacoes($username);
+            $dados_usuario['logged_in'] = TRUE;
+
+            // Adicionar dados do usuario na Session
+            $this->session->set_userdata($dados_usuario);
+
+            $this->load->view('medico/index', $dados_usuario);
+        } 
+        else {
+            $this->load->view('paciente/index');
+        }
     }
 
     public function logout() {
-        // Removendo os dados da Session
-        $sess_array = array('username' => '');
-        $this->session->unset_userdata('logged_in', $sess_array);
+        $this->session->sess_destroy();
         $data['message_display'] = 'Logout realizado com sucesso.';
         $this->load->view('login', $data);
     }

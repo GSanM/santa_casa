@@ -18,9 +18,9 @@
 		
 		<nav class="menu">
             <ul>
-                <li><a href="<?php echo base_url('index')?>">Home</a></li>
-                <li><a href="<?php echo base_url('cadastro')?>">Cadastrar nova Clínica</a></li>
-                <li><a href="<?php echo base_url('listagem')?>">Listar Clínicas</a></li>
+                <li><a href="<?php echo base_url('admin/index')?>">Home</a></li>
+                <li><a href="<?php echo base_url('admin/cadastro')?>">Cadastrar nova Clínica</a></li>
+                <li><a href="<?php echo base_url('admin/listagem')?>">Listar Clínicas</a></li>
                 <li><a href="<?php echo base_url('autenticacao/logout')?>">Sair</a></li>
             </ul>
         </nav>	
