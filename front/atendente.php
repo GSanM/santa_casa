@@ -51,7 +51,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 							<input id="name" class="form-control" type="text" name="name" placeholder="Nome" required>
-							<input id="age" class="form-control" type="date" name="age" placeholder="Idade" required>
+							<input id="age" class="form-control" type="date" name="age" placeholder="Data de Nascimento" required>
 							<input id="cpf" class="form-control" maxlength="14" type="text" autocomplete="off" name="cpf" placeholder="CPF" onkeypress="aplicaMascara(this, cpfMask)" required>
 						</div>
 
@@ -68,6 +68,11 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
 							<input id="phone" class="form-control" type="tel" name="phone" maxlength="14" onkeypress="aplicaMascara(this, telMask)" placeholder="Telefone" required>
+						</div>
+
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+							<input id="username" class="form-control" type="text" name="username" placeholder="Usuario" required>
 						</div>
 
 						<div class="input-group">

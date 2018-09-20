@@ -13,29 +13,29 @@ class LogicaAtendente
     }
 
     // ADICIONA
-    public function adicionaPaciente($cpf, $nome, $data_nas, $email, $end, $tel, $senha)
+    public function adicionaPaciente($cpf, $nome, $data_nas, $email, $end, $tel, $usuario, $senha)
     {   
-        $sql = "INSERT INTO paciente VALUES ($cpf, $nome, $data_nas, $email, $end, $tel, $senha)";
-       
+        $sql = "INSERT INTO paciente (cpf, nome, data_nas, email, endereco, telefone, senha, usuario) VALUES ('$cpf', '$nome', '$data_nas', '$email', '$end', '$tel', '$senha', '$usuario')";
+    
         return submit($this->conn, $sql);
     }
 
-    public function adicionaMedico($crm, $cpf, $nome, $data_nas, $email, $end, $tel, $especialidade, $senha)
+    public function adicionaMedico($crm, $cpf, $nome, $data_nas, $email, $end, $tel, $especialidade, $usuario, $senha)
     {
-        $sql = "INSERT INTO medico VALUES ($crm, $cpf, $nome, $data_nas, $email, $end, $tel, $especialidade, $senha)";
-       
+        $sql = "INSERT INTO medico (crm, cpf, nome, data_nas, email, endereco, telefone, especialidade, senha, usuario) VALUES ('$crm', '$cpf', '$nome', '$data_nas', '$email', '$end', '$tel', '$especialidade', '$senha', '$usuario');";
+
         return submit($this->conn, $sql);
     }
     
     public function adicionaConsulta($crm_medico, $cpf_paciente, $horario, $data, $clinica)
     {
-        $sql = "INSERT INTO consulta (crm_medico, cpf_paciente, horario, data, clinica) VALUES ($crm_medico, $cpf_paciente, $horario, $data, $clinica)";
+        $sql = "INSERT INTO consulta (crm_medico, cpf_paciente, horario, data, clinica) VALUES ('$crm_medico', '$cpf_paciente', '$horario', '$data', '$clinica')";
 
         $answer = submit($this->conn, $sql);
     }
     
     // ALTERA
-    public function alteraPaciente($cpf, $nome, $data_nas, $email, $end, $tel, $senha)
+    public function alteraPaciente($cpf, $nome, $data_nas, $email, $end, $tel, $usuario, $senha)
     {   
         $sql = "UPDATE paciente SET nome=$nome, data_nas=$data_nas, email=$email, endereco=$end, telefone=$tel, senha=$senha WHERE cpf = $cpf";
        
