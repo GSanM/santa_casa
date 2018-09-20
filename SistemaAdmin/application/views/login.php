@@ -14,7 +14,8 @@
         <link rel="icon" href="media/Icons/png/asterisk.png">
 
         <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/css/login.css')?>" />
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css')?>" />
+        
 
         <!--Fontes-->
         <link href='https://fonts.googleapis.com/css?family=Amiko' rel='stylesheet'>		
@@ -31,8 +32,26 @@
             
             <input type="text" class="form-input" name="username" placeholder="Usuário" required="" autofocus=""  autocomplete="on"/>
             <input type="password" class="form-input" name="password" placeholder="Senha" required=""  autocomplete="on"/>      
-    
             
+            <div class="btn-group" name="radio-pac-doc" id="pac-doc">
+                <label class="btn btn-default form-check-label" style="font-weight: bold; width: 100px;">
+                    <input class="form-check-input" type="radio" name="option" value="admin" id="admin" checked>
+                    <span>Admin</span>
+                </label>
+
+                <label class="btn btn-default form-check-label" style="font-weight: bold; width: 100px;">
+                    <input class="form-check-input" type="radio" name="option" value="paciente" id="paciente">
+                    <span >Paciente</span>
+                </label>
+            
+                <label class="btn btn-default form-check-label" style="font-weight: bold; width: 100px;">
+                    <input class="form-check-input" type="radio" name="option" value="medico" id="medico">
+                    <span >Médico</span>
+                </label>
+
+
+            </div>	
+
             <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
         </form>
     </div>

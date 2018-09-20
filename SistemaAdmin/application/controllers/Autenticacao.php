@@ -12,7 +12,9 @@ class Autenticacao extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->library('session');
-        $this->load->model('login_database');
+        $this->load->model('loginDatabaseAdmin_model');
+        $this->load->model('loginDatabaseMedico_model');
+        $this->load->model('loginDatabasePaciente_model');
         
     }
 
@@ -32,8 +34,19 @@ class Autenticacao extends CI_Controller {
 
         $data = array ( 'usuario' => $this->input->post('username'),
                         'senha'   => $this->input->post('password'));
-                        
-        $result = $this->login_database->login($data);
+
+        $usuarioLogadoComo = $this->input->post('option');
+
+        if($usuarioLogadoComo == "admin")
+            $result = $this->loginDatabaseAdmin_model->login($data);
+        
+        else if ($usuarioLogadoComo == "medico") 
+            $result = $this->loginDatabaseMedico_model->login($data);
+        
+        else 
+            $result = $this->loginDatabasePaciente_model->login($data);
+        
+
 
         if ($result == FALSE) {
             $data = array( 'mensagem_erro' => 'Nome ou e-mail inválidos');
@@ -41,21 +54,24 @@ class Autenticacao extends CI_Controller {
             return;
         }
         
-        $username      = $this->input->post('username');
-        $dados_usuario = $this->login_database->read_user_information($username);
+        $username = $this->input->post('username');
         
-        if ($dados_usuario == FALSE) {
-            return;
-        }
+  
 
-        $session_data = array('usuario' => $dados_usuario[0]->usuario);
+        $session_data = array('logadoComo' => $usuarioLogadoComo);
 
         // Adicionar dados do usuario na Session
         $this->session->set_userdata('logged_in', $session_data);
-        $this->load->view('index');
+
+        if($usuarioLogadoComo == "admin")
+            $this->load->view('index');
+
+        else if ($usuarioLogadoComo == "medico")
+            $this->load->view('medico');
+
+        else
+            $this->load->view('paciente');
     
-        
-        
     }
 
     public function logout() {

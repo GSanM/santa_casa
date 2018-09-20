@@ -9,7 +9,7 @@
     require_once "database/LogicaAtendente.php";
 
     $lAtendente = new LogicaAtendente();
-    /*
+    
     $nome = $_POST['name'];
     $data_nas = $_POST['age'];
     $cpf = $_POST['cpf'];
@@ -18,28 +18,14 @@
     $telefone = $_POST['phone'];
     $usuario = $_POST['username'];
     $senha = $_POST['password'];
-    */
+
+
+    if($_POST['pac_doc'] == 'doctor') {
  
-    $nome = "Antonio Vieira";
-    $data_nas = "2010-10-02";
-    $cpf = 33311144455;
-    $email = "antonio@yahoo.com";
-    $endereco = "Rua das Madeixas";
-    $telefone = "(18) 9900009999";
-    $usuario = "antoniao98";
-    $senha = "senha123";
-
-
-    //if($_POST['pac_doc'] == 'doctor') {
-    if(0) {
- /*
         $crm = $_POST['crm'];
         $especialidade = $_POST['spec'];
         $inicio_expediente = $_POST['appointment_hour_start_all'];
         $fim_expediente = $_POST['appointment_hour_end_all'];
-*/
-        $crm = 300001;
-        $especialidade = "Ortopedista";
 
         if($inicio_expediente == "") {
             $inicio_expediente_seg = $_POST['appointment_hour_start_mon'];
