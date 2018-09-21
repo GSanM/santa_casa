@@ -24,7 +24,7 @@ class Consulta_model extends CI_Model {
         $this->db->select('consulta.data, consulta.horario, paciente.nome_paciente, clinica.nome_clinica');
         $this->db->from('consulta');
         $this->db->join('paciente', 'consulta.cpf_paciente = paciente.cpf');
-        $this->db->join('clinica', 'clinica.cnpj = consulta.clinica');
+        $this->db->join('clinica', 'clinica.cnpj = consulta.cnpj_clinica');
 
         $this->db->order_by('data','ASC');
 

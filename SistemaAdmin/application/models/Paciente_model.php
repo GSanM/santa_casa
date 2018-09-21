@@ -11,7 +11,7 @@ class Paciente_model extends CI_Model {
 
     public $crm;
     public $cpf;
-    public $nome;
+    public $nome_paciente;
     public $data_nas;
     public $email;
     public $endereco;

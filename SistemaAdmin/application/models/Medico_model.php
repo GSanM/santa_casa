@@ -11,7 +11,7 @@ class Medico_model extends CI_Model {
 
     public $crm;
     public $cpf;
-    public $nome;
+    public $nome_medico;
     public $data_nas;
     public $email;
     public $endereco;
@@ -37,7 +37,7 @@ class Medico_model extends CI_Model {
             foreach($query->result() as $row) {
                 $data['crm'] = $row->crm;
                 $data['cpf'] = $row->cpf;
-                $data['nome'] = $row->nome;
+                $data['nome_medico'] = $row->nome_medico;
                 $data['data_nas'] = $row->data_nas;
                 $data['email'] = $row->email;
                 $data['endereco'] = $row->endereco;
