@@ -1,0 +1,20 @@
+
+table {
+    /*background: rgb(114, 180, 158);*/
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px 5px;
+    box-shadow: 0 0 20px rgba(17, 1, 1, 0);
+    
+}
+
+.coluna-titulo {
+    text-align: center;
+    border-right: 2px solid black;
+}
+
+.letra-mes {
+    font-size: 25px;
+
+}
+
