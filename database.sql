@@ -40,6 +40,7 @@ CREATE TABLE atendente (cpf BIGINT,
                         email VARCHAR(100),
                         endereco VARCHAR(100),
                         telefone VARCHAR(50),
+                        senha VARCHAR(256),
 						PRIMARY KEY (cpf)
 );
 

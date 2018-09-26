@@ -2,21 +2,21 @@
 
 require_once "connectDB.php";
 
-class Medico
+class LogicaMedico
 {
     private $conn;
 
     function __construct()
     {
-        $this->$conn = connectToDB('root', 'Dijkstra');
-        $this->$conn->set_charset("utf8");
+        $this->conn = connectToDB('root', 'Dijkstra');
+        $this->conn->set_charset("utf8");
     }
 
     public function vePerfil($crm)
     {
         $sql = "SELECT * FROM medico WHERE crm = $crm";
 
-        $result = $this->$conn->query($sql);
+        $result = $this->conn->query($sql);
         if ($result->num_rows > 0)
         {
             $row = $result->fetch_assoc();
@@ -47,14 +47,14 @@ class Medico
     {
         $sql = "UPDATE medico SET nome=$nome, data_nas=$data_nas, email=$email, endereco=$end, telefone=$tel, especialidade=$especialidade, senha=$senha, cnpj_clinica=$cnpj_clinica WHERE crm = $crm";
        
-        return submit($this->$conn, $sql);
+        return submit($this->conn, $sql);
     }
 
     public function veAgenda($crm)
     {
         $sql = "SELECT cpf_paciente, horario, data, clinica FROM consulta WHERE crm_medico = $crm";
 
-        $result = $this->$conn->query($sql);
+        $result = $this->conn->query($sql);
         if ($result->num_rows > 0)
         {   
             echo '  <head>
@@ -84,7 +84,7 @@ class Medico
                 
                 //Procura nome do cliente pelo CPF
                 $sql2 = "SELECT nome FROM paciente WHERE cpf = $paciente";
-                $result2 = $this->$conn->query($sql2);
+                $result2 = $this->conn->query($sql2);
                 
                 if ($result2->num_rows > 0)
                 {
@@ -100,7 +100,7 @@ class Medico
                 //Procura nome da clinica pelo CNPJ
                 $sql3 = "SELECT nome FROM clinica WHERE cnpj = $clinica";
                 
-                $result3 = $this->$conn->query($sql3);
+                $result3 = $this->conn->query($sql3);
                 if ($result3->num_rows > 0)
                 {
                     $nome_clinica = $result3->fetch_assoc()['nome'];
@@ -128,7 +128,7 @@ class Medico
     {
         $sql = "SELECT cpf_paciente, data, diagnostico, observacao FROM consulta WHERE cpf_paciente = $cpf";
 
-        $result = $this->$conn->query($sql);
+        $result = $this->conn->query($sql);
         if ($result->num_rows > 0)
         {   
             echo '  <head>
@@ -157,7 +157,7 @@ class Medico
                 
                 //Procura nome do cliente pelo CPF
                 $sql2 = "SELECT nome FROM paciente WHERE cpf = $paciente";
-                $result2 = $this->$conn->query($sql2);
+                $result2 = $this->conn->query($sql2);
             
                 if ($result2->num_rows > 0)
                 {

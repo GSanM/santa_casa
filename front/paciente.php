@@ -107,20 +107,9 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-plus-sign"></i></span>
 							<input list="doctors" id="med-name" class="form-control" type="text" name="med-name" placeholder="Nome do Médico" required>
-							<datalist id="doctors">
-								<?php
-									$dom_xml = new DOMDocument();
-									$dom_xml->load("../server/database/Medicos.xml");
-
-									$medicos = $dom_xml->getElementsByTagName("Medico");
-
-									foreach( $medicos as $medico ) {
-										$nomes = $medico->getElementsByTagName("nome");
-										$nome = $nomes->item(0)->nodeValue;
-										echo "<option value=\"$nome\">";
-									}
-								?>
-							</datalist>
+							<?php
+								require_once "../model/getMedicos.php";
+							?>
 						</div>
 
 						<!--Horário-->

@@ -15,21 +15,21 @@ class Atendente
     // ADICIONA
     public function adicionaPaciente($cpf, $nome, $data_nas, $email, $end, $tel, $senha)
     {   
-        $sql = "INSERT INTO paciente VALUES ($cpf, $nome, $data_nas, $email, $end, $tel, $senha)";
+        $sql = "INSERT INTO paciente VALUES ($cpf, '$nome', '$data_nas', '$email', '$end', '$tel', '$senha')";
        
         return submit($this->$conn, $sql);
     }
 
     public function adicionaMedico($crm, $cpf, $nome, $data_nas, $email, $end, $tel, $especialidade, $senha)
     {
-        $sql = "INSERT INTO medico VALUES ($crm, $cpf, $nome, $data_nas, $email, $end, $tel, $especialidade, $senha)";
+        $sql = "INSERT INTO medico VALUES ($crm, $cpf, '$nome', '$data_nas', '$email', '$end', '$tel', '$especialidade', '$senha')";
        
         return submit($this->$conn, $sql);
     }
     
     public function adicionaConsulta($crm_medico, $cpf_paciente, $horario, $data, $clinica)
     {
-        $sql = "INSERT INTO consulta (crm_medico, cpf_paciente, horario, data, clinica) VALUES ($crm_medico, $cpf_paciente, $horario, $data, $clinica)";
+        $sql = "INSERT INTO consulta (crm_medico, cpf_paciente, horario, data, clinica) VALUES ($crm_medico, $cpf_paciente, '$horario', '$data', $clinica)";
 
         $answer = submit($this->$conn, $sql);
     }
@@ -37,14 +37,14 @@ class Atendente
     // ALTERA
     public function alteraPaciente($cpf, $nome, $data_nas, $email, $end, $tel, $senha)
     {   
-        $sql = "UPDATE paciente SET nome=$nome, data_nas=$data_nas, email=$email, endereco=$end, telefone=$tel, senha=$senha WHERE cpf = $cpf";
+        $sql = "UPDATE paciente SET nome='$nome', data_nas='$data_nas', email='$email', endereco='$end', telefone='$tel', senha='$senha' WHERE cpf = $cpf";
        
         return submit($this->$conn, $sql);
     }
     
     public function alteraConsulta($id, $crm_medico, $cpf_paciente, $horario, $data, $clinica)
     {
-        $sql = "UPDATE consulta SET crm_medico=$crm_medico, cpf_paciente=$cpf_paciente, horario=$horario, data=$data, clinica=$clinica WHERE id = $id";
+        $sql = "UPDATE consulta SET crm_medico=$crm_medico, cpf_paciente=$cpf_paciente, horario='$horario', data='$data', clinica=$clinica WHERE id = $id";
 
         $answer = submit($this->$conn, $sql);
     }
