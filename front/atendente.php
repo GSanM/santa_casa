@@ -51,7 +51,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 							<input id="name" class="form-control" type="text" name="name" placeholder="Nome" required>
-							<input id="age" class="form-control" type="date" name="age" placeholder="Data de Nascimento" required>
+							<input id="age" class="form-control" type="date" name="age" placeholder="Idade" required>
 							<input id="cpf" class="form-control" maxlength="14" type="text" autocomplete="off" name="cpf" placeholder="CPF" onkeypress="aplicaMascara(this, cpfMask)" required>
 						</div>
 
@@ -68,11 +68,6 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
 							<input id="phone" class="form-control" type="tel" name="phone" maxlength="14" onkeypress="aplicaMascara(this, telMask)" placeholder="Telefone" required>
-						</div>
-
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-							<input id="username" class="form-control" type="text" name="username" placeholder="Usuario" required>
 						</div>
 
 						<div class="input-group">
@@ -172,7 +167,7 @@
 						<button class="btn btn-default" id="agendar">Agendar</button>
 						<button class="btn btn-default" id="alterar-consulta">Alterar</button>
 						<button type="submit" class="btn btn-default" id="confirmar-consulta" onclick="ajaxPost('../server/mostrarConsultasPendentes.php', '#resultado-consulta-pendente')">Confirmar</button>
-						<button class="btn btn-default" id="ver-agenda-medico" onclick="ajaxPost('../server/verTodosMedicos.php', '#result-verAgenda')">Medico</button>
+						<button class="btn btn-default" id="ver-agenda-medico">Medico</button>
 						<button class="btn btn-default" id="ver-agenda-paciente">Paciente</button>
 					</div>
 
@@ -289,11 +284,7 @@
 					<div class="collapse" id="resultado-consulta-pendente"></div>
 
 					<div class="collapse" id="ver-agenda-medico-div">
-						<h3>Médicos Cadastrados no Sistema</h3>
-						<br>
-						<div id="result-verAgenda"></div>
-						<br><br>
-						
+						<h3>Ver agenda de médicos</h3>
 						<form name="form_verAgenda" id="form_verAgendaMedico" onsubmit="return false;">
 							<!--Nome Médico-->
 							<div class="input-group">
@@ -306,9 +297,10 @@
 								<button type="submit" class="btn btn-default" id="btnVerAgenda" onclick="ajaxPost('../server/verAgendaSimplificadaMedico.php', '#result-verAgenda')">Buscar</button>
 							</div>
 						</form>
+						<div id="result-verAgenda"></div>
 
-						</form>
-						
+
+
 					</div>
 
 					<div class="collapse" id="ver-agenda-paciente-div">

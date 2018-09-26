@@ -24,7 +24,7 @@
 			session_start();
 			if((!isset ($_SESSION['cpf']) == true) and (!isset ($_SESSION['senha']) == true)) {
 				session_destroy();
-				//header('Location: login.html');
+				header('Location: login.html');
 			}
         ?>
 	</head>

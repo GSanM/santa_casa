@@ -1,2 +1,27 @@
 <?xml version="1.0"?>
-<Consultas/>
+<Consultas>
+  <Consulta>
+    <nome-paciente>Josu&#xE9; Amaral</nome-paciente>
+    <nome-medico>Ricardo Stroke</nome-medico>
+    <data>2018-12-10</data>
+    <horario>17:00</horario>
+    <receita/>
+    <diagnostico/>
+  </Consulta>
+  <Consulta>
+    <nome-paciente>Gabriel Kilver</nome-paciente>
+    <nome-medico>Roberto Silva</nome-medico>
+    <data>2018-10-31</data>
+    <horario>10:00</horario>
+    <receita/>
+    <diagnostico/>
+  </Consulta>
+  <Consulta>
+    <nome-paciente>Josu&#xE9; Amaral</nome-paciente>
+    <nome-medico>Roberto Silva</nome-medico>
+    <data>2018-07-10</data>
+    <horario>18:00</horario>
+    <receita/>
+    <diagnostico/>
+  </Consulta>
+</Consultas>
