@@ -1,6 +1,6 @@
 <?php
 
-require_once "connectDB.php";
+require_once "../model/connectDB.php";
 
 class LogicaMedico
 {
@@ -58,7 +58,7 @@ class LogicaMedico
         if ($result->num_rows > 0)
         {   
             echo '  <head>
-                        <link rel="stylesheet" type="text/css" href="table.css">
+                        <link rel="stylesheet" type="text/css" href="../view/css/table.css">
                     </head>';
             echo '<table class="table-fill">
                     <thead>

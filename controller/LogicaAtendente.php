@@ -1,6 +1,6 @@
 <?php
 
-require_once "connectDB.php";
+require_once "../model/connectDB.php";
 
 class Atendente
 {
@@ -8,8 +8,8 @@ class Atendente
 
     function __construct()
     {
-        $this->$conn = connectToDB('root', 'Dijkstra');
-        $this->$conn->set_charset("utf8");
+        $this->conn = connectToDB('root', 'Dijkstra');
+        $this->conn->set_charset("utf8");
     }
 
     // ADICIONA

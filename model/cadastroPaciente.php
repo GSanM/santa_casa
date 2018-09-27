@@ -1,6 +1,6 @@
 <?php
 
-require_once "../model/atendente.php";
+require_once "../controller/LogicaAtendente.php";
 
 $atendente = new Atendente();
 

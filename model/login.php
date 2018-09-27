@@ -1,6 +1,6 @@
 <?php
 
-require_once "../model/autenticador.php";
+require_once "autenticador.php";
 
 $autenticador = new Autenticador();
 

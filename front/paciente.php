@@ -48,8 +48,8 @@
 				<div class="btn-group"  id="root-buttons">
 					<button id="ver-perfil" class="btn btn-default"><i class="glyphicon glyphicon-user"></i> Perfil</button>
 					<button class="btn btn-default" id="agendar"><i class="glyphicon glyphicon-calendar"></i> Agendar</button>
-					<button class="btn btn-default" id="minhas-consultas" onclick="ajaxPost('../server/verAgendaSimplificadaPaciente.php', '#result-historico')"><i class="glyphicon glyphicon-book"></i> Minhas Consultas</button>
-					<button class="btn btn-default" id="sair" onclick="ajaxPost('../server/sair.php'), sair()"><i class="glyphicon glyphicon-log-out"></i> Sair</button>
+					<button class="btn btn-default" id="minhas-consultas" onclick="ajaxPost('../model/agendaPaciente.php', '#result-historico')"><i class="glyphicon glyphicon-book"></i> Minhas Consultas</button>
+					<button class="btn btn-default" id="sair" onclick="ajaxPost('../server/sair.php', sair())"><i class="glyphicon glyphicon-log-out"></i> Sair</button>
 				</div>
 
 				<!--Perfil-->
