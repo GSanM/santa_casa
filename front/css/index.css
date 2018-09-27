@@ -64,18 +64,19 @@ div.footer {
     bottom: 0;
     background-color: whitesmoke;
     height: 115px;
+    position: relative;
 
     -webkit-transition: 1s; /* Safari */
     transition: 1s;
 }
 
 div.arrow {
-    display: block;
+
     margin-left: auto;
     margin-right: auto;
     width: 10%;
-    
-    margin-top: 50px;
+    position: relative;
+    margin: auto;
     background-color: rgba(30, 185, 190);
     width: 200px;
     height: 60px;
@@ -90,7 +91,7 @@ div.arrow:hover {
 }
 
 img#arrow {
-    display: block;
+
     margin-left: auto;
     margin-right: auto;
     width: 90%;

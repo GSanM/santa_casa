@@ -23,7 +23,7 @@ h1 {
 }
 
 .border {
-    border: 2px solid rgb(81, 231, 231);
+    border: 0px solid rgb(81, 231, 231);
     border-radius: 15px;
     
     padding: 20px;

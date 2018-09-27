@@ -8,23 +8,26 @@ body {
 
 /*Borda ao redor do form*/
 .border {
-    border: 1px solid rgb(81, 231, 231);
+    border: 0px solid rgb(81, 231, 231);
     border-radius: 15px;
-    border-top-left-radius: 0%;
-    
-    padding: 20px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 15px;
+    padding-top:0;
     width: 50%
 }
 
 /*Botao cadastro*/
 button#ver-perfil, button#agendar, button#sair, button#minhas-consultas {
-    background-color: rgb(81, 231, 231);
+    height: 60px;
+    width: 270px;
+    background-color: rgb(253, 83, 83);
     color: white;
-    border-radius: 20px;
+    border-radius: 5px;
+    font-size: 23px;
+    margin-right: 10px;
     font-weight: bold;
     border: 0;
-    border-bottom-left-radius: 0%;
-    border-bottom-right-radius: 0%;
 }
 
 input#med-name, input#appointment_day, input#appointment_hour {
@@ -50,7 +53,12 @@ input.form-control {
 /*Header*/
 img {
     display: inline;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.header {
+    margin-top: 10px;
+    margin-bottom: -10px;
 }
 
 .header h1 {
@@ -66,14 +74,19 @@ h1#h1-paciente {
 /*--------------*/
 
 .btn.btn-default:hover {
-    background-color: rgba(81, 231, 231, 0.377);
+    background-color: rgb(173, 52, 52);
+    color: white;
 }
 
 .btn.btn-default {
     border-radius: 20px;
     border: 0;
-    background-color: rgb(81, 231, 231);
+    background-color: rgb(253, 83, 83);
     color: white;
     font-weight: bold;
     margin-top: 10px;
+}
+
+div#root-buttons {
+    margin: auto;
 }
