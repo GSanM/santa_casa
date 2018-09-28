@@ -8,7 +8,7 @@ CREATE TABLE clinica (	cnpj BIGINT,
                         endereco VARCHAR(100),
                         telefone VARCHAR(50),
 						PRIMARY KEY (cnpj)
-					);	
+);	
 
 #Cria tabela paciente
 CREATE TABLE paciente (	cpf BIGINT,
@@ -49,13 +49,13 @@ CREATE TABLE consulta ( crm_medico BIGINT,
                         cpf_paciente BIGINT,
                         horario TIME,
                         data DATE,
-                        clinica BIGINT,
+                        cnpj_clinica BIGINT,
                         diagnostico VARCHAR(100),
-                        observacao VARCHAR(128),
+                        receita VARCHAR(128),
                         PRIMARY KEY (data, horario),
                         FOREIGN KEY (crm_medico) REFERENCES medico(crm),
                         FOREIGN KEY (cpf_paciente) REFERENCES paciente(cpf),
-                        FOREIGN KEY (clinica) REFERENCES clinica(cnpj)
+                        FOREIGN KEY (cnpj_clinica) REFERENCES clinica(cnpj)
 );
 
 #Cria tabela admin

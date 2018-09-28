@@ -100,7 +100,7 @@ class Atendente
 
     function __destruct()
     {
-        $conn->close();
+        $this->conn->close();
     }
 }
 
