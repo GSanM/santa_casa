@@ -43,10 +43,10 @@
 			</div>
             
             <div class="btn-group">
-                <button class="btn btn-default" id="agenda" onclick="ajaxPost('../server/verAgendaCompleta.php', '#result-verAgenda')">Agenda</button>
-				<button class="btn btn-default" id="perfil" >Meu Perfil</button>
-				<button class="btn btn-default" id="ver-historico">Ver Histórico</button>
-				<button class="btn btn-default" id="sair" onclick="ajaxPost('../server/sair.php'), sair()">Sair</button>
+                <button class="btn btn-default" id="agenda" onclick="ajaxPost('../model/agendaMedico.php', '#result-verAgenda')"><i class="glyphicon glyphicon-book"></i> Agenda</button>
+				<button class="btn btn-default" id="perfil" ><i class="glyphicon glyphicon-user"></i> Meu Perfil</button>
+				<button class="btn btn-default" id="ver-historico"><i class="glyphicon glyphicon-paste"></i> Ver Histórico</button>
+				<button class="btn btn-default" id="sair" onclick="ajaxPost('../server/sair.php'), sair()"><i class="glyphicon glyphicon-log-out"></i> Sair</button>
             </div>
 
             <div class="collapse" id="agenda_div">
@@ -68,6 +68,7 @@
 								
 								<h1 id="h1-atendente"> Meu Perfil </h1>
 						</div>
+						<br>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 							<input id="name" class="form-control" type="text" name="name" value="<?php echo $_SESSION['nome'];?>" placeholder="Nome" required> 
@@ -168,28 +169,37 @@
 			<!--Historico de paciente-->
 			<div class="collapse" id="ver-historico-div">
 				<div class="border">
+					<h2>Histórico do Paciente</h2>
 					<form id="form_historico" onsubmit="return false;">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 							<input list="patients" id="patient-name" class="form-control" type="text" name="patient-name" placeholder="Nome do Paciente" required> 
 							<datalist id="patients">
 								<?php
-									$dom_xml = new DOMDocument();
-									$dom_xml->load("../server/database/Pacientes.xml");
-
-									$medicos = $dom_xml->getElementsByTagName("Paciente");
-
-									foreach( $medicos as $medico ) {
-										$nomes = $medico->getElementsByTagName("nome");
-										$nome = $nomes->item(0)->nodeValue;
-										echo "<option value=\"$nome\">";
-									}
+									require_once "../model/getPacientes.php";
 								?>
 							</datalist>
 						</div>
-						<button type="submit" class="btn btn-default" id="btnHistorico" onclick="ajaxPost('../server/verHistoricoCompleto.php', '#result-historico')">Histórico</button>
+						<button type="submit" class="btn btn-default" id="btnHistorico" onclick="ajaxPost('../model/historicoPaciente.php', '.result-historico')">Histórico</button>
 					</form>
-					<div id="result-historico"></div>
+					<div class="result-historico"></div>
+					<!-- The Modal -->
+					<div id="myModal" class="modal">
+						<!-- Modal content -->
+						<div class="modal-content">
+							<span class="close">&times;</span>
+							<form method="POST" action="../model/consulta.php">
+								<h2>Diagnóstico</h2>
+								<textarea rows="4" cols="50" name="diagnostico" placeholder="Insira o diagnóstico do paciente..."></textarea>
+								<br>
+
+								<h2>Receita</h2>
+								<textarea rows="4" cols="50" name="receita" placeholder="Insira a receita do paciente..."></textarea>
+								<br>
+								<button class="btn btn-default" type="submit">Enviar</button>
+							</form>
+						</div>
+					</div>
 				</div>
 			</div>
 

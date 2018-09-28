@@ -52,7 +52,7 @@ class LogicaMedico
 
     public function veAgenda($crm)
     {
-        $sql = "SELECT cpf_paciente, horario, data, clinica FROM consulta WHERE crm_medico = $crm";
+        $sql = "SELECT cpf_paciente, horario, data, cnpj_clinica FROM consulta WHERE crm_medico = $crm";
 
         $result = $this->conn->query($sql);
         if ($result->num_rows > 0)
@@ -75,7 +75,7 @@ class LogicaMedico
                 $data =  $row['data'];
                 $hora =  $row['horario'];
                 $paciente = $row['cpf_paciente'];
-                $clinica = $row['clinica'];
+                $clinica = $row['cnpj_clinica'];
 
                 echo "<tbody class=\"table-hover\">
                         <tr>
@@ -126,21 +126,22 @@ class LogicaMedico
 
     public function veHistoricoPaciente($cpf)
     {
-        $sql = "SELECT cpf_paciente, data, diagnostico, observacao FROM consulta WHERE cpf_paciente = $cpf";
+        $sql = "SELECT cpf_paciente, data, diagnostico, receita FROM consulta WHERE cpf_paciente = $cpf AND data < CURDATE()";
 
         $result = $this->conn->query($sql);
         if ($result->num_rows > 0)
         {   
             echo '  <head>
-                        <link rel="stylesheet" type="text/css" href="table.css">
+                        <link rel="stylesheet" type="text/css" href="../view/css/table.css">
+                        <script src="../front/js/modal.js"></script>
                     </head>';
-            echo '<table class="table-fill">
+            echo '<table style="margin-top: 20px;" class="table-fill" id="table-historico">
                     <thead>
                         <tr>
                             <th class="text-left">Data</th>
                             <th class="text-left">Paciente</th>
                             <th class="text-left">Diagnóstico</th>
-                            <th class="text-left">Observação</th>
+                            <th class="text-left">Receita</th>
                         </tr>
                     </thead>';
     
@@ -149,7 +150,7 @@ class LogicaMedico
                 $data =  $row['data'];
                 $paciente = $row['cpf_paciente'];
                 $diagnostico = $row['diagnostico'];
-                $observacao = $row['observacao'];
+                $receita = $row['receita'];
 
                 echo "<tbody class=\"table-hover\">
                         <tr>
@@ -171,18 +172,36 @@ class LogicaMedico
                 $result2->close();
                 
                 echo "  <td>$diagnostico</td>
-                        <td>$observacao</td>";
+                        <td>$receita</td>";
                 echo '</tr>';
             }
             $result->close();
             echo '</tbody>
-                </table>';  
+                </table>';
         }
+        else
+        {
+            echo "<p>O paciente não possui consultas anteriores.</p>";
+        }
+    }
+
+    public function receitar($receita, $horario, $data)
+    {
+        $sql = "UPDATE consulta SET receita=$receita WHERE horario LIKE $horario AND data LIKE $data";
+       
+        return submit($this->conn, $sql);
+    }
+
+    public function diagnosticar($diagnostico, $horario, $data)
+    {
+        $sql = "UPDATE consulta SET diagnostico=$diagnostico WHERE horario LIKE $horario AND data LIKE $data";
+       
+        return submit($this->conn, $sql);
     }
 
     function __destruct()
     {
-        $conn->close();
+        $this->conn->close();
     }
 }
 

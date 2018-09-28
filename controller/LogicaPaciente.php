@@ -85,6 +85,11 @@ class Paciente
             echo "Nenhuma consulta encontrada.";
         }
     }
+
+    function __destruct()
+    {
+        $this->conn->close();
+    }
 }
 
 ?>
