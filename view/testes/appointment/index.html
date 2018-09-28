@@ -15,49 +15,47 @@
 
 <body>
 
-	<div class="wrapper">
+<div class="wrapper">
 	
 	<div id="calendar">
 		<div>
 			<div class="overlay">
-				<h1>Make appointment</h1>
+				<h1>Agendamento</h1>
 			</div>
 		</div>
 		<div class="monthChange"></div>
 	</div>
-  
+
 	<div class="inner-wrap">
- 
-		<form>
+		
+		<form action="agendar.php" method="POST">
 			<div class="form-name collapse">
-				<input type="text" name="name" id="name" value=<?php $_SESSION['nome']?>
+				<input type="text" name="name" id="name" value="José">
 			</div>
 			
 			<div class="form-name">
 				<input type="email" name="email" id="email">
-				<label for="email">Your email</label>
+				<label for="email">Seu email</label>
 			</div>
 			
+			<input type="hidden" name="day" id="day" value="">
+			<input type="hidden" name="month" id="month" value="">
+			<input type="hidden" name="year" id="year" value="">
+			<input type="hidden" name="hour" id="hour" value="">
+
 			<button type="submit" class="request disabled">
-				Request appointment <br class="break">
-				<span>on</span>
+				Requisitar Agendamento <br class="break">
+				<span>em</span>
 				<span class="day"></span>
-				<span>at</span>
+				<span>às</span>
 				<span class="time"></span>
 				<div class="sendRequest"></div>
 			</button>
+			
 		</form>
 
-		<button type="submit" class="request disabled">
-			Requisitar consulta <br class="break">
-			<span>on</span>
-			<span class="day"></span>
-			<span>at</span>
-			<span class="time"></span>
-			<div class="sendRequest"></div>
-		</button>
 	</div>
-  
+
 	<div class='timepicker'>
 		<div class="owl">
 			<div>08:00</div>

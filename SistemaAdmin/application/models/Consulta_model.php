@@ -32,16 +32,26 @@ class Consulta_model extends CI_Model {
 
         if ($query->num_rows() > 0) {
             return $query;
+        }
+ 
+        else {
+            return false;
+        }
+    }
 
-            /*
-            foreach ($query->result() as $row) {
-                echo "<br>-----------<br>";
-                echo "crm: ". $row->crm_medico;
-                echo "<br>";
-                echo "cpf: ". $row->cpf_paciente;
-                echo "<br>-----------<br>";
-            }
-            */
+    public function get_pacientes_por_medico($crm) {
+
+        $this->db->select('paciente.nome_paciente, clinica.nome_clinica');
+        $this->db->from('consulta');
+        $this->db->join('paciente', 'consulta.cpf_paciente = paciente.cpf');
+        $this->db->join('clinica', 'clinica.cnpj = consulta.cnpj_clinica');
+
+        $this->db->order_by('nome_paciente','ASC');
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return $query;
         }
  
         else {

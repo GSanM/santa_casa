@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>SGCSH</title>
+<title>SUM</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css')?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/medico.css')?>">
@@ -21,7 +21,7 @@
             <ul>
                 <li><a href="<?php echo base_url('medico/index')?>">Home</a></li>
                 <li><a href="<?php echo base_url('medico/agenda')?>">Agenda</a></li>
-                <li><a href="<?php echo base_url('medico/clinicas')?>">Clínicas</a></li>
+                <li><a href="<?php echo base_url('medico/clinicas')?>">Clinicas</a></li>
                 <li><a href="<?php echo base_url('medico/pacientes')?>">Pacientes</a></li>
                 <li><a href="<?php echo base_url('autenticacao/logout')?>">Sair</a></li>
             </ul>

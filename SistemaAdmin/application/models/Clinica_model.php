@@ -45,6 +45,15 @@ class Clinica_model extends CI_Model {
         return $query->result();
     }
 
+    public function get_clinicas_por_medico($crm) {
+        /*
+        $this->db->from('clinica');
+        $this->db->where("crm");
+        */
+        $query = $this->db->get('clinica'); 
+        return $query->result();
+    }
+
 }
 
 ?>

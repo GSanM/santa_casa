@@ -36,10 +36,17 @@ $('#calendar').datepicker({
     day  = date.getDate(),
     month = date.getMonth() + 1,
     year =  date.getFullYear();
+  
     
     // display day and month on submit button
     var monthName = months[month - 1];
-    $(".request .day").text(monthName + " " + day);
+    $(".request .day").text(day + " de " + monthName);
+    document.getElementById("day").value = day;
+    document.getElementById("month").value = monthName;
+    document.getElementById("year").value = year;
+    
+    time = $(".owl-stage .center").text();
+    document.getElementById("hour").value = time;
     
     todayEqualActive();    
 
@@ -83,6 +90,7 @@ $('#calendar').datepicker({
     // display time on submit button
     time = $(".owl-stage .center").text();
     $(".request .time").text(time);
+    document.getElementById("hour").value = "90";
     
     $(".owl-item").removeClass("center-n");
     center = $(".owl-stage").find(".center");
@@ -111,6 +119,7 @@ $(".form-name input").each(function(){
 $(".timepicker").on('click', '.owl-next', function(){
   time = $(".owl-stage .center").text();
   $(".request .time").text(time);
+  document.getElementById("hour") = time;
   
   $(".owl-item").removeClass("center-n");
   center = $(".owl-stage").find(".center");
@@ -121,6 +130,7 @@ $(".timepicker").on('click', '.owl-next', function(){
 $(".timepicker").on('click', '.owl-prev', function(){
   time = $(".owl-stage .center").text();
   $(".request .time").text(time);
+  document.getElementById("hour") = time;
   
   $(".owl-item").removeClass("center-n");
   center = $(".owl-stage").find(".center");
