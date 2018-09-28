@@ -38,7 +38,9 @@
                     echo ((date('H')) >= 3 && (date('H')) < 9) ? "Boa Madrugada, " : "";
                     echo ((date('H')) >= 9 && (date('H')) < 15) ? "Bom Dia, " : "";
                     echo ((date('H')) >= 15 && (date('H')) < 21) ? "Boa Tarde, " : "";
-                    echo ((date('H')) >= 21 || (date('H')) < 3) ? "Boa Noite, " : "";
+					echo ((date('H')) >= 21 || (date('H')) < 3) ? "Boa Noite, " : "";
+					
+					
 					echo "Sr(a). " . $_SESSION['nome'] . "</h1><br><br>";
                 ?>
 			</div>

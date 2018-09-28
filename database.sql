@@ -17,6 +17,7 @@ CREATE TABLE paciente (	cpf BIGINT,
                         email VARCHAR(150),
                         endereco VARCHAR(100),
                         telefone VARCHAR(50),
+                        usuario VARCHAR(256),
                         senha VARCHAR(256),
 						PRIMARY KEY (cpf)
 );
@@ -30,6 +31,7 @@ CREATE TABLE medico (	crm BIGINT,
                         endereco VARCHAR(100),
                         telefone VARCHAR(50),
                         especialidade VARCHAR(30),
+                        usuario VARCHAR(256),
                         senha VARCHAR(256),
 						PRIMARY KEY (crm)
 );
@@ -40,6 +42,7 @@ CREATE TABLE atendente (cpf BIGINT,
                         email VARCHAR(100),
                         endereco VARCHAR(100),
                         telefone VARCHAR(50),
+                        usuario VARCHAR(256),
                         senha VARCHAR(256),
 						PRIMARY KEY (cpf)
 );
