@@ -14,8 +14,8 @@
             echo "<tbody>";
             foreach($resultado as $result) { 
                 echo "<tr>";
-                echo "<td>$result->nome_clinica</td>";
-                echo "<td>$result->nome_gerente</td>";
+                echo "<td>$result->nome</td>";
+                echo "<td>$result->nome</td>";
                 echo "<td>$result->cnpj</td>";
                 echo "<td>$result->endereco</td>";
                 echo "<td>$result->telefone</td>";

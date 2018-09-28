@@ -21,7 +21,7 @@ class Consulta_model extends CI_Model {
 
     public function get_consultas_por_medico($crm) {
 
-        $this->db->select('consulta.data, consulta.horario, paciente.nome_paciente, clinica.nome_clinica');
+        $this->db->select('consulta.data, consulta.horario, paciente.nome AS nome_paciente, clinica.nome AS nome_clinica');
         $this->db->from('consulta');
         $this->db->join('paciente', 'consulta.cpf_paciente = paciente.cpf');
         $this->db->join('clinica', 'clinica.cnpj = consulta.cnpj_clinica');
@@ -41,7 +41,7 @@ class Consulta_model extends CI_Model {
 
     public function get_pacientes_por_medico($crm) {
 
-        $this->db->select('paciente.nome_paciente, clinica.nome_clinica');
+        $this->db->select('paciente.nome AS nome_paciente, clinica.nome AS nome_clinica');
         $this->db->from('consulta');
         $this->db->join('paciente', 'consulta.cpf_paciente = paciente.cpf');
         $this->db->join('clinica', 'clinica.cnpj = consulta.cnpj_clinica');

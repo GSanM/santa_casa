@@ -2,7 +2,7 @@
 <h3>Bom Dia Dr. 
 <?php
     if (session_status() != PHP_SESSION_NONE) {
-        echo $this->session->userdata('nome_medico');
+        echo $this->session->userdata('nome');
     }
 ?>
 </h3>

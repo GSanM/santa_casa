@@ -2,7 +2,7 @@
 
 <?php
     if (session_status() != PHP_SESSION_NONE) 
-        echo "<p style='text-align:center; margin-top:30px; font-size:30px'> DR. " . $this->session->userdata('nome_medico') . "</p>";
+        echo "<p style='text-align:center; margin-top:30px; font-size:30px'> DR. " . $this->session->userdata('nome') . "</p>";
 ?>
 
 <?php
