@@ -8,7 +8,7 @@ class LogicaAtendente
 
     function __construct()
     {
-        $this->conn = connectToDB('root', 'root');
+        $this->conn = connectToDB('root', 'Dijkstra');
         $this->conn->set_charset("utf8");
     }
 

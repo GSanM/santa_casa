@@ -9,6 +9,7 @@
 		<link rel="icon" href="media/Icons/png/asterisk.png">
 
 		<link rel="stylesheet" type="text/css" media="screen" href="css/atendente.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="css/tblhorario.css" />
 		<link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css" />
 
 		<!--Fontes-->
@@ -18,6 +19,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<script src="js/atendente.js"></script>
+		<script src="js/tblhorario.js"></script>
 		<script type="text/javascript" src="js/post.js"></script>
 
 		<?php
@@ -83,7 +85,7 @@
 						<!--Medico-->
 
 						<div class="collapse" id="doctor-div">
-							<fieldset>
+							
 								<legend>Médico</legend>
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-plus-sign"></i></span>
@@ -91,55 +93,105 @@
 									<input id="spec" class="form-control" type="text" name="spec" placeholder="Especialidade" required>
 								</div>
 
-								<div class="collapse-in" id="unique_day">
-									<div class="input-group">
-										<span class="input-group-addon"><i class="glyphicon glyphicon-dashboard"></i></span>
-										<input id="appointment_hour_start_all" class="form-control hour-inline" type="time" name="appointment_hour_start_all">
-										<span class="span-ate">até</span>
-										<input id="appointment_hour_end_all" class="form-control hour-inline" type="time" name="appointment_hour_end_all">
-									</div>
-								</div>
+								<table id="tbl">
+									<thead>
+										<tr>
+										<th class="date-column"></th>
+										<th>08h00</th>
+										<th>09h00</th>
+										<th>10h00</th>
+										<th>11h00</th>
+										<th>12h00</th>
+										<th>13h00</th>
+										<th>14h00</th>
+										<th>15h00</th>
+										<th>16h00</th>
+										<th>17h00</th>
+										<th>18h00</th>
+										</tr>
+									</thead>
 
-								<button class="btn btn-default" id="show_all_days">Horário/Dia</button>
+									<tbody>
+										<tr>
+											<td>Segunda-Feira</td>
+											<td id="seg8"  onclick="content(this)"></td>
+											<td id="seg9"  onclick="content(this)"></td>
+											<td id="seg10" onclick="content(this)"></td>
+											<td id="seg11" onclick="content(this)"></td>
+											<td id="seg12" onclick="content(this)"></td>
+											<td id="seg13" onclick="content(this)"></td>
+											<td id="seg14" onclick="content(this)"></td>
+											<td id="seg15" onclick="content(this)"></td>
+											<td id="seg16" onclick="content(this)"></td>
+											<td id="seg17" onclick="content(this)"></td>
+											<td id="seg18" onclick="content(this)"></td>
+										</tr>
 
-								<!--Expediente médico dias da semana-->
-								<div class="collapse" id="week_days">
-									<div class="input-group">
-										<span class="input-group-addon">SEG</span>
-										<input id="appointment_hour_start_mon" class="form-control hour-inline" type="time" name="appointment_hour_start_mon">
-										<span class="span-ate">até</span>
-										<input id="appointment_hour_end_mon" class="form-control" type="time" name="appointment_hour_end_mon">
-									</div>
+										<tr>
+											<td>Terça-Feira</td>
+											<td id="ter8"  onclick="content(this)"></td>
+											<td id="ter9"  onclick="content(this)"></td>
+											<td id="ter10" onclick="content(this)"></td>
+											<td id="ter11" onclick="content(this)"></td>
+											<td id="ter12" onclick="content(this)"></td>
+											<td id="ter13" onclick="content(this)"></td>
+											<td id="ter14" onclick="content(this)"></td>
+											<td id="ter15" onclick="content(this)"></td>
+											<td id="ter16" onclick="content(this)"></td>
+											<td id="ter17" onclick="content(this)"></td>
+											<td id="ter18" onclick="content(this)"></td>
+										</tr>
 
-									<div class="input-group">
-										<span class="input-group-addon">TER</span>
-										<input id="appointment_hour_start_tue" class="form-control hour-inline" type="time" name="appointment_hour_start_tue">
-										<span class="span-ate">até</span>
-										<input id="appointment_hour_end_tue" class="form-control" type="time" name="appointment_hour_end_tue">
-									</div>
+										<tr>
+											<td>Quarta-Feira</td>
+											<td id="qua8"  onclick="content(this)"></td>
+											<td id="qua9"  onclick="content(this)"></td>
+											<td id="qua10" onclick="content(this)"></td>
+											<td id="qua11" onclick="content(this)"></td>
+											<td id="qua12" onclick="content(this)"></td>
+											<td id="qua13" onclick="content(this)"></td>
+											<td id="qua14" onclick="content(this)"></td>
+											<td id="qua15" onclick="content(this)"></td>
+											<td id="qua16" onclick="content(this)"></td>
+											<td id="qua17" onclick="content(this)"></td>
+											<td id="qua18" onclick="content(this)"></td>
+										</tr>
 
-									<div class="input-group">
-										<span class="input-group-addon" id="qua">QUA</span>
-										<input id="appointment_hour_start_wed" class="form-control hour-inline" type="time" name="appointment_hour_start_wed">
-										<span class="span-ate">até</span>
-										<input id="appointment_hour_end_wed" class="form-control" type="time" name="appointment_hour_end_wed">
-									</div>
+										<tr>
+											<td>Quinta-Feira</td>
+											<td id="qui8"  onclick="content(this)"></td>
+											<td id="qui9"  onclick="content(this)"></td>
+											<td id="qui10" onclick="content(this)"></td>
+											<td id="qui11" onclick="content(this)"></td>
+											<td id="qui12" onclick="content(this)"></td>
+											<td id="qui13" onclick="content(this)"></td>
+											<td id="qui14" onclick="content(this)"></td>
+											<td id="qui15" onclick="content(this)"></td>
+											<td id="qui16" onclick="content(this)"></td>
+											<td id="qui17" onclick="content(this)"></td>
+											<td id="qui18" onclick="content(this)"></td>
+										</tr>
 
-									<div class="input-group">
-										<span class="input-group-addon">QUI</span>
-										<input id="appointment_hour_start_thu" class="form-control hour-inline" type="time" name="appointment_hour_start_thu">
-										<span class="span-ate">até</span>
-										<input id="appointment_hour_end_thu" class="form-control" type="time" name="appointment_hour_end_thu">
-									</div>
+										<tr>
+											<td>Sexta-Feira</td>
+											<td id="sex8"  onclick="content(this)"></td>
+											<td id="sex9"  onclick="content(this)"></td>
+											<td id="sex10" onclick="content(this)"></td>
+											<td id="sex11" onclick="content(this)"></td>
+											<td id="sex12" onclick="content(this)"></td>
+											<td id="sex13" onclick="content(this)"></td>
+											<td id="sex14" onclick="content(this)"></td>
+											<td id="sex15" onclick="content(this)"></td>
+											<td id="sex16" onclick="content(this)"></td>
+											<td id="sex17" onclick="content(this)"></td>
+											<td id="sex18" onclick="content(this)"></td>
+										</tr>
 
-									<div class="input-group">
-										<span class="input-group-addon">SEX</span>
-										<input id="appointment_hour_start_fri" class="form-control hour-inline" type="time" name="appointment_hour_start_fri">
-										<span class="span-ate">até</span>
-										<input id="appointment_hour_end_fri" class="form-control" type="time" name="appointment_hour_end_fri">
-									</div>
-								</div>
-							</fieldset>
+
+									</tbody>
+								</table>
+
+							
 						</div>
 
 						<!--Radio Buttons-->
