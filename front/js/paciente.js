@@ -27,3 +27,14 @@ $(document).ready(function(){
       });
     });
   });
+
+
+  $(function() {
+    
+    $( ".dialog" ).click(function(){        
+        $('#horarioMedico').html($(this).html()); 
+
+        alert($(this).html);
+    });
+});
+

@@ -42,7 +42,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Amatic+SC|Archivo+Narrow|Exo|Anton|Josefin+Sans|Lobster" rel="stylesheet">
 		<!--======-->
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<script src="js/paciente.js"></script>
 		<script src="js/atendente.js"></script>
@@ -130,7 +130,7 @@
 				<div class="collapse" id="agendar-div">
 					<div class="border">
 						<h2>Agendar Consulta</h2>
-
+						
 						<input class="form-control" id="myInput" type="text" placeholder="Filtrar..">
 						<br>
 						<table class="table table-bordered table-striped">
@@ -143,7 +143,7 @@
 							</thead>
 							<tbody id="myTable">
 							<?php while($row = mysqli_fetch_array($search_result)):?>
-										<tr>
+										<tr class="dialog" class="clickable">
 											<td><?php echo $row['nome_medico'];?></td>
 											<td><?php echo $row['especialidade'];?></td>
 											<td><?php echo $row['nome_clinica'];?></td>
@@ -152,7 +152,8 @@
 
 							</tbody>
 						</table>
-
+						
+						
 						<form name="form_agendar" id="form_agendar" onsubmit="return false;">
 
 							<div class="collapse">
