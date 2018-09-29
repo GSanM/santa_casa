@@ -1,3 +1,30 @@
+<?php
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+
+
+	$columnsToBeSelected = "medico.nome AS nome_medico, clinica.nome AS nome_clinica, especialidade";
+	$join1               = "medico JOIN medico_clinica ON medico.crm = medico_clinica.crm_medico";
+	$join2               = "JOIN clinica ON clinica.cnpj = medico_clinica.cnpj_clinica";
+	$query = "SELECT $columnsToBeSelected FROM $join1 $join2";
+
+	$search_result = filterTable($query);
+
+
+	function filterTable($query)
+	{
+		$connect = mysqli_connect("localhost", "root", "Dijkstra", "clinical_system");
+		$filter_Result = mysqli_query($connect, $query);
+
+		if($filter_Result)
+			return $filter_Result;
+		else
+			die(mysqli_error($connect));
+	}
+
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -30,6 +57,7 @@
 		?>
     </head>
     <body>
+
 		<div class="container">
 			<div class="header">
 				<img src="media/Icons/png/blood-drop.png" width="5%">
@@ -102,6 +130,29 @@
 				<div class="collapse" id="agendar-div">
 					<div class="border">
 						<h2>Agendar Consulta</h2>
+
+						<input class="form-control" id="myInput" type="text" placeholder="Filtrar..">
+						<br>
+						<table class="table table-bordered table-striped">
+							<thead>
+							<tr>
+								<th>Nome do Médico</th>
+								<th>Especialidade</th>
+								<th>Nome da Clinica</th>
+							</tr>
+							</thead>
+							<tbody id="myTable">
+							<?php while($row = mysqli_fetch_array($search_result)):?>
+										<tr>
+											<td><?php echo $row['nome_medico'];?></td>
+											<td><?php echo $row['especialidade'];?></td>
+											<td><?php echo $row['nome_clinica'];?></td>
+										</tr>
+							<?php endwhile;?>
+
+							</tbody>
+						</table>
+
 						<form name="form_agendar" id="form_agendar" onsubmit="return false;">
 
 							<div class="collapse">

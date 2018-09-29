@@ -208,6 +208,66 @@
 						</div>
 
 						<div class="submit-button">
+							<input hidden="true" name="iseg8"  id="iseg8"  value="0">
+							<input hidden="true" name="iseg9"  id="iseg9"  value="0">
+							<input hidden="true" name="iseg10" id="iseg10" value="0">
+							<input hidden="true" name="iseg11" id="iseg11" value="0">
+							<input hidden="true" name="iseg12" id="iseg12" value="0">
+							<input hidden="true" name="iseg13" id="iseg13" value="0">
+							<input hidden="true" name="iseg14" id="iseg14" value="0">
+							<input hidden="true" name="iseg15" id="iseg15" value="0">
+							<input hidden="true" name="iseg16" id="iseg16" value="0">
+							<input hidden="true" name="iseg17" id="iseg17" value="0">
+							<input hidden="true" name="iseg18" id="iseg18" value="0">
+
+							<input hidden="true" name="iter8"  id="iter8"  value="0">
+							<input hidden="true" name="iter9"  id="iter9"  value="0">
+							<input hidden="true" name="iter10" id="iter10" value="0">
+							<input hidden="true" name="iter11" id="iter11" value="0">
+							<input hidden="true" name="iter12" id="iter12" value="0">
+							<input hidden="true" name="iter13" id="iter13" value="0">
+							<input hidden="true" name="iter14" id="iter14" value="0">
+							<input hidden="true" name="iter15" id="iter15" value="0">
+							<input hidden="true" name="iter16" id="iter16" value="0">
+							<input hidden="true" name="iter17" id="iter17" value="0">
+							<input hidden="true" name="iter18" id="iter18" value="0">
+
+							<input hidden="true" name="iqua8"  id="iqua8"  value="0">
+							<input hidden="true" name="iqua9"  id="iqua9"  value="0">
+							<input hidden="true" name="iqua10" id="iqua10" value="0">
+							<input hidden="true" name="iqua11" id="iqua11" value="0">
+							<input hidden="true" name="iqua12" id="iqua12" value="0">
+							<input hidden="true" name="iqua13" id="iqua13" value="0">
+							<input hidden="true" name="iqua14" id="iqua14" value="0">
+							<input hidden="true" name="iqua15" id="iqua15" value="0">
+							<input hidden="true" name="iqua16" id="iqua16" value="0">
+							<input hidden="true" name="iqua17" id="iqua17" value="0">
+							<input hidden="true" name="iqua18" id="iqua18" value="0">
+
+							<input hidden="true" name="iqui8"  id="iqui8"  value="0">
+							<input hidden="true" name="iqui9"  id="iqui9"  value="0">
+							<input hidden="true" name="iqui10" id="iqui10" value="0">
+							<input hidden="true" name="iqui11" id="iqui11" value="0">
+							<input hidden="true" name="iqui12" id="iqui12" value="0">
+							<input hidden="true" name="iqui13" id="iqui13" value="0">
+							<input hidden="true" name="iqui14" id="iqui14" value="0">
+							<input hidden="true" name="iqui15" id="iqui15" value="0">
+							<input hidden="true" name="iqui16" id="iqui16" value="0">
+							<input hidden="true" name="iqui17" id="iqui17" value="0">
+							<input hidden="true" name="iqui18" id="iqui18" value="0">
+
+							<input hidden="true" name="isex8"  id="isex8"  value="0">
+							<input hidden="true" name="isex9"  id="isex9"  value="0">
+							<input hidden="true" name="isex10" id="isex10" value="0">
+							<input hidden="true" name="isex11" id="isex11" value="0">
+							<input hidden="true" name="isex12" id="isex12" value="0">
+							<input hidden="true" name="isex13" id="isex13" value="0">
+							<input hidden="true" name="isex14" id="isex14" value="0">
+							<input hidden="true" name="isex15" id="isex15" value="0">
+							<input hidden="true" name="isex16" id="isex16" value="0">
+							<input hidden="true" name="isex17" id="isex17" value="0">
+							<input hidden="true" name="isex18" id="isex18" value="0">
+							
 							<button type="submit" class="btn btn-default" id="btnCadastrar" onclick="ajaxPost('../server/cadastrar.php', '#resultado-cadastro')" >Cadastrar</button>
 						</div>
 
