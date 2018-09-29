@@ -5,7 +5,7 @@ class Clinicas extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model("Consulta_model");
+		$this->load->model("Medico_model");
 	}
 	
 	public function index() {
@@ -14,7 +14,8 @@ class Clinicas extends CI_Controller {
             return;
         }
         
-        $dados_consulta['query'] = $this->Consulta_model->get_consultas_por_medico($this->session->userdata('crm'));
+        $dados_consulta['query'] = $this->Medico_model->get_clinicas_por_medico($this->session->userdata('crm'));
+
 
 		$this->load->view('medico/clinicas', $dados_consulta);
 	}

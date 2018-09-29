@@ -45,7 +45,7 @@ class Autenticacao extends CI_Controller {
         else if ($usuarioLogadoComo == "medico") 
             $result = $this->loginDatabaseMedico_model->login($data);
         
-        else 
+        else if ($usuarioLogadoComo == "paciente") 
             $result = $this->loginDatabasePaciente_model->login($data);
         
 
@@ -57,14 +57,9 @@ class Autenticacao extends CI_Controller {
         }
         
         $username = $this->input->post('username');
-        
-        //PEGAR AS INFORMACOES DE QUEM ESTÁ LOGADO//
-
-
 
 
         if($usuarioLogadoComo == "admin") {
-
             $this->load->view('admin/index');
         }
         else if ($usuarioLogadoComo == "medico") {
@@ -77,8 +72,15 @@ class Autenticacao extends CI_Controller {
 
             $this->load->view('medico/index', $dados_usuario);
         } 
-        else {
-            $this->load->view('paciente/index');
+        else if ($usuarioLogadoComo == "paciente") { 
+            
+            $dados_usuario['logged_in'] = TRUE;
+            $dados_usuario = $this->Paciente_model->get_informacoes($username);
+            $dadosAgendaDoUsuario['query'] = $this->Paciente_model->get_agenda($username);
+
+            // Adicionar dados do usuario na Session
+            $this->session->set_userdata($dados_usuario);
+            $this->load->view('paciente/agenda', $dadosAgendaDoUsuario);
         }
     }
 

@@ -1,5 +1,5 @@
 <?php require_once ('header.php')?>
-<h3>Bom Dia Dr. 
+<h3 style="text-align: center; margin-top:20px">Bom Dia Dr. 
 <?php
     if (session_status() != PHP_SESSION_NONE) {
         echo $this->session->userdata('nome');

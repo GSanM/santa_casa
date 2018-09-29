@@ -51,7 +51,17 @@ class Medico_model extends CI_Model {
             return false;
         }
     }
+    public function get_clinicas_por_medico($username) {
+ 
+        $this->db->select('clinica.nome AS nome_clinica, clinica.endereco AS endereco_clinica, clinica.telefone AS telefone_clinica, clinica.nome_gerente');    
+        $this->db->from('medico');
+        $this->db->join('medico_clinica', 'medico.crm = medico_clinica.crm_medico');
+        $this->db->join('clinica', 'clinica.cnpj = medico_clinica.cnpj_clinica');
 
+        $query = $this->db->get();
+
+        return $query;
+    }
 }
 
 ?>

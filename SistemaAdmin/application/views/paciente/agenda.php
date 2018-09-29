@@ -1,8 +1,11 @@
-<?php require_once ('application/views/medico/header.php')?>
+<?php require_once ('application/views/paciente/header.php')?>
 
 <?php
-    if (session_status() != PHP_SESSION_NONE) 
-        echo "<p style='text-align:center; margin-top:30px; font-size:30px'>" . $this->session->userdata('nome') . "</p>";
+    
+    if (session_status() != PHP_SESSION_NONE) {
+        echo "<p style='text-align:center; margin-top:30px; font-size:30px'> " . $this->session->userdata('nome') . "</p>";
+    } else 
+        header('Location: ' . base_url(""));
 ?>
 
 <?php
@@ -37,7 +40,7 @@
     $mes = $NOME_MESES[intval($data_sepadada[1])];
     $ano = $data_sepadada[0];
     $consultasNoDia = count($consultas[$data]) + 1;
-    //<td  rowspan='.$consultasNoDia.">".$dia. " de ". $mes ." de " .$ano.'</td>
+    
     echo'
     <table>
         <tr class="coluna-titulo">
@@ -49,7 +52,7 @@
             echo '
             
             <tr>
-                <td width=60%><b>'. $consulta->horario .'</b> - '. $consulta->nome_paciente .' - '.$consulta->nome_clinica .'</td>
+                <td width=60%><b>'. $consulta->horario .'</b> - Dr(a) '. $consulta->nome_medico .' - '.$consulta->nome_clinica .'</td>
             </tr>
             ';
         }
