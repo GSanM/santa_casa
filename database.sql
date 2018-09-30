@@ -86,3 +86,11 @@ CREATE TABLE horarios ( id INTEGER NOT NULL AUTO_INCREMENT,
                         PRIMARY KEY(id),
                         FOREIGN KEY (crm_medico) REFERENCES medico(crm)
 );
+
+#Cria tabela que relaciona medico com clinica
+CREATE TABLE medico_clinica ( crm_medico   VARCHAR(15),
+                              cnpj_clinica VARCHAR(20),
+                              PRIMARY KEY (crm_medico, cnpj_clinica),
+                              FOREIGN KEY (crm_medico) REFERENCES medico(crm),
+                              FOREIGN KEY (cnpj_clinica) REFERENCES clinica(cnpj)
+);
