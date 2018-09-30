@@ -10,6 +10,7 @@
 
 		<link rel="stylesheet" type="text/css" media="screen" href="css/atendente.css" />
 		<link rel="stylesheet" type="text/css" media="screen" href="css/tblhorario.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="../view/css/table.css" />
 		<link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css" />
 
 		<!--Fontes-->
@@ -40,9 +41,9 @@
 				<h1 id="h1-atendente"> Atendente </h1>
 			</div>
 			<div class="btn-group"  id="root-buttons">
-				<button id="cadastrar" class="btn btn-default">Cadastrar</button>
-				<button class="btn btn-default" id="agenda">Consultas</button>
-				<button class="btn btn-default" id="sair" onclick="ajaxPost('../server/sair.php'), sair()">Sair</button>
+				<button id="cadastrar" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i> Cadastrar</button>
+				<button class="btn btn-default" id="agenda"><i class="glyphicon glyphicon-book"></i> Consultas</button>
+				<button class="btn btn-default" id="sair" onclick="ajaxPost('../server/sair.php'), sair()"><i class="glyphicon glyphicon-log-out"></i> Sair</button>
 			</div>
 
 			<!--Cadastro-->
@@ -73,7 +74,7 @@
 						</div>
 
 						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 							<input id="username" class="form-control" type="text" name="username" placeholder="Usuario" required>
 						</div>
 
@@ -92,106 +93,114 @@
 									<input id="crm" class="form-control" type="text" name="crm" placeholder="CRM" required>
 									<input id="spec" class="form-control" type="text" name="spec" placeholder="Especialidade" required>
 								</div>
+								<button type="button" class="btn btn-default" id="btnHorarios">Horários</button>
 
-								<table id="tbl">
-									<thead>
-										<tr>
-										<th class="date-column"></th>
-										<th>08h00</th>
-										<th>09h00</th>
-										<th>10h00</th>
-										<th>11h00</th>
-										<th>12h00</th>
-										<th>13h00</th>
-										<th>14h00</th>
-										<th>15h00</th>
-										<th>16h00</th>
-										<th>17h00</th>
-										<th>18h00</th>
-										</tr>
-									</thead>
+								<!-- The Modal -->
+								<div id="myModal" class="modal">
+									<!-- Modal content -->
+									<div class="modal-content">
+										<span class="close">&times;</span>
+					
+										<table class="table-fill" id="tbl">
+											<thead>
+												<tr>
+												<th class="date-column"></th>
+												<th>08h00</th>
+												<th>09h00</th>
+												<th>10h00</th>
+												<th>11h00</th>
+												<th>12h00</th>
+												<th>13h00</th>
+												<th>14h00</th>
+												<th>15h00</th>
+												<th>16h00</th>
+												<th>17h00</th>
+												<th>18h00</th>
+												</tr>
+											</thead>
 
-									<tbody>
-										<tr>
-											<td>Segunda-Feira</td>
-											<td id="seg8"  onclick="content(this)"></td>
-											<td id="seg9"  onclick="content(this)"></td>
-											<td id="seg10" onclick="content(this)"></td>
-											<td id="seg11" onclick="content(this)"></td>
-											<td id="seg12" onclick="content(this)"></td>
-											<td id="seg13" onclick="content(this)"></td>
-											<td id="seg14" onclick="content(this)"></td>
-											<td id="seg15" onclick="content(this)"></td>
-											<td id="seg16" onclick="content(this)"></td>
-											<td id="seg17" onclick="content(this)"></td>
-											<td id="seg18" onclick="content(this)"></td>
-										</tr>
+											<tbody class="table-hover">
+												<tr>
+													<td>Segunda-Feira</td>
+													<td id="seg8"  onclick="content(this)"></td>
+													<td id="seg9"  onclick="content(this)"></td>
+													<td id="seg10" onclick="content(this)"></td>
+													<td id="seg11" onclick="content(this)"></td>
+													<td id="seg12" onclick="content(this)"></td>
+													<td id="seg13" onclick="content(this)"></td>
+													<td id="seg14" onclick="content(this)"></td>
+													<td id="seg15" onclick="content(this)"></td>
+													<td id="seg16" onclick="content(this)"></td>
+													<td id="seg17" onclick="content(this)"></td>
+													<td id="seg18" onclick="content(this)"></td>
+												</tr>
 
-										<tr>
-											<td>Terça-Feira</td>
-											<td id="ter8"  onclick="content(this)"></td>
-											<td id="ter9"  onclick="content(this)"></td>
-											<td id="ter10" onclick="content(this)"></td>
-											<td id="ter11" onclick="content(this)"></td>
-											<td id="ter12" onclick="content(this)"></td>
-											<td id="ter13" onclick="content(this)"></td>
-											<td id="ter14" onclick="content(this)"></td>
-											<td id="ter15" onclick="content(this)"></td>
-											<td id="ter16" onclick="content(this)"></td>
-											<td id="ter17" onclick="content(this)"></td>
-											<td id="ter18" onclick="content(this)"></td>
-										</tr>
+												<tr>
+													<td>Terça-Feira</td>
+													<td id="ter8"  onclick="content(this)"></td>
+													<td id="ter9"  onclick="content(this)"></td>
+													<td id="ter10" onclick="content(this)"></td>
+													<td id="ter11" onclick="content(this)"></td>
+													<td id="ter12" onclick="content(this)"></td>
+													<td id="ter13" onclick="content(this)"></td>
+													<td id="ter14" onclick="content(this)"></td>
+													<td id="ter15" onclick="content(this)"></td>
+													<td id="ter16" onclick="content(this)"></td>
+													<td id="ter17" onclick="content(this)"></td>
+													<td id="ter18" onclick="content(this)"></td>
+												</tr>
 
-										<tr>
-											<td>Quarta-Feira</td>
-											<td id="qua8"  onclick="content(this)"></td>
-											<td id="qua9"  onclick="content(this)"></td>
-											<td id="qua10" onclick="content(this)"></td>
-											<td id="qua11" onclick="content(this)"></td>
-											<td id="qua12" onclick="content(this)"></td>
-											<td id="qua13" onclick="content(this)"></td>
-											<td id="qua14" onclick="content(this)"></td>
-											<td id="qua15" onclick="content(this)"></td>
-											<td id="qua16" onclick="content(this)"></td>
-											<td id="qua17" onclick="content(this)"></td>
-											<td id="qua18" onclick="content(this)"></td>
-										</tr>
+												<tr>
+													<td>Quarta-Feira</td>
+													<td id="qua8"  onclick="content(this)"></td>
+													<td id="qua9"  onclick="content(this)"></td>
+													<td id="qua10" onclick="content(this)"></td>
+													<td id="qua11" onclick="content(this)"></td>
+													<td id="qua12" onclick="content(this)"></td>
+													<td id="qua13" onclick="content(this)"></td>
+													<td id="qua14" onclick="content(this)"></td>
+													<td id="qua15" onclick="content(this)"></td>
+													<td id="qua16" onclick="content(this)"></td>
+													<td id="qua17" onclick="content(this)"></td>
+													<td id="qua18" onclick="content(this)"></td>
+												</tr>
 
-										<tr>
-											<td>Quinta-Feira</td>
-											<td id="qui8"  onclick="content(this)"></td>
-											<td id="qui9"  onclick="content(this)"></td>
-											<td id="qui10" onclick="content(this)"></td>
-											<td id="qui11" onclick="content(this)"></td>
-											<td id="qui12" onclick="content(this)"></td>
-											<td id="qui13" onclick="content(this)"></td>
-											<td id="qui14" onclick="content(this)"></td>
-											<td id="qui15" onclick="content(this)"></td>
-											<td id="qui16" onclick="content(this)"></td>
-											<td id="qui17" onclick="content(this)"></td>
-											<td id="qui18" onclick="content(this)"></td>
-										</tr>
+												<tr>
+													<td>Quinta-Feira</td>
+													<td id="qui8"  onclick="content(this)"></td>
+													<td id="qui9"  onclick="content(this)"></td>
+													<td id="qui10" onclick="content(this)"></td>
+													<td id="qui11" onclick="content(this)"></td>
+													<td id="qui12" onclick="content(this)"></td>
+													<td id="qui13" onclick="content(this)"></td>
+													<td id="qui14" onclick="content(this)"></td>
+													<td id="qui15" onclick="content(this)"></td>
+													<td id="qui16" onclick="content(this)"></td>
+													<td id="qui17" onclick="content(this)"></td>
+													<td id="qui18" onclick="content(this)"></td>
+												</tr>
 
-										<tr>
-											<td>Sexta-Feira</td>
-											<td id="sex8"  onclick="content(this)"></td>
-											<td id="sex9"  onclick="content(this)"></td>
-											<td id="sex10" onclick="content(this)"></td>
-											<td id="sex11" onclick="content(this)"></td>
-											<td id="sex12" onclick="content(this)"></td>
-											<td id="sex13" onclick="content(this)"></td>
-											<td id="sex14" onclick="content(this)"></td>
-											<td id="sex15" onclick="content(this)"></td>
-											<td id="sex16" onclick="content(this)"></td>
-											<td id="sex17" onclick="content(this)"></td>
-											<td id="sex18" onclick="content(this)"></td>
-										</tr>
+												<tr>
+													<td>Sexta-Feira</td>
+													<td id="sex8"  onclick="content(this)"></td>
+													<td id="sex9"  onclick="content(this)"></td>
+													<td id="sex10" onclick="content(this)"></td>
+													<td id="sex11" onclick="content(this)"></td>
+													<td id="sex12" onclick="content(this)"></td>
+													<td id="sex13" onclick="content(this)"></td>
+													<td id="sex14" onclick="content(this)"></td>
+													<td id="sex15" onclick="content(this)"></td>
+													<td id="sex16" onclick="content(this)"></td>
+													<td id="sex17" onclick="content(this)"></td>
+													<td id="sex18" onclick="content(this)"></td>
+												</tr>
 
 
-									</tbody>
-								</table>
-
-							
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<script src="js/modal.js"></script>
 						</div>
 
 						<!--Radio Buttons-->
@@ -268,7 +277,7 @@
 							<input hidden="true" name="isex17" id="isex17" value="0">
 							<input hidden="true" name="isex18" id="isex18" value="0">
 							
-							<button type="submit" class="btn btn-default" id="btnCadastrar" onclick="ajaxPost('../server/cadastrar.php', '#resultado-cadastro')" >Cadastrar</button>
+							<button type="submit" class="btn btn-default" id="btnCadastrar" onclick="ajaxPost('../model/atendenteCadastro.php', '#resultado-cadastro')" >Cadastrar</button>
 						</div>
 
 					</div>
@@ -301,16 +310,7 @@
 								<input list="patients" id="patient-name" class="form-control" type="text" name="patient-name" placeholder="Nome do Paciente" required>
 								<datalist id="patients">
 								<?php
-										$dom_xml = new DOMDocument();
-										$dom_xml->load("../server/database/Pacientes.xml");
-
-										$medicos = $dom_xml->getElementsByTagName("Paciente");
-
-										foreach( $medicos as $medico ) {
-											$nomes = $medico->getElementsByTagName("nome");
-											$nome = $nomes->item(0)->nodeValue;
-											echo "<option value=\"$nome\">";
-										}
+										require_once "../model/getPacientes.php";
 									?>
 								</datalist>
 							</div>
@@ -321,16 +321,7 @@
 								<input list="doctors" id="med-name" class="form-control" type="text" name="med-name" placeholder="Nome do Médico" required>
 								<datalist id="doctors">
 									<?php
-										$dom_xml = new DOMDocument();
-										$dom_xml->load("../server/database/Medicos.xml");
-
-										$medicos = $dom_xml->getElementsByTagName("Medico");
-
-										foreach( $medicos as $medico ) {
-											$nomes = $medico->getElementsByTagName("nome");
-											$nome = $nomes->item(0)->nodeValue;
-											echo "<option value=\"$nome\">";
-										}
+										require_once "../model/getMedicos.php";
 									?>
 								</datalist>
 							</div>

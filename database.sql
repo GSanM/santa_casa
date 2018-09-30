@@ -2,7 +2,7 @@ CREATE DATABASE clinical_system;
 USE clinical_system;
 
 #Cria tabela clinica
-CREATE TABLE clinica (	cnpj BIGINT,
+CREATE TABLE clinica (	cnpj VARCHAR(20),
 						nome VARCHAR(50),
                         nome_gerente VARCHAR(50),
                         endereco VARCHAR(100),
@@ -11,7 +11,7 @@ CREATE TABLE clinica (	cnpj BIGINT,
 );	
 
 #Cria tabela paciente
-CREATE TABLE paciente (	cpf BIGINT,
+CREATE TABLE paciente (	cpf VARCHAR(14),
 						nome VARCHAR(50),
                         data_nas DATE,
                         email VARCHAR(150),
@@ -23,8 +23,8 @@ CREATE TABLE paciente (	cpf BIGINT,
 );
 
 #Cria tabela medico
-CREATE TABLE medico (	crm BIGINT,
-						cpf BIGINT,
+CREATE TABLE medico (	crm VARCHAR(15),
+						cpf VARCHAR(14),
 						nome VARCHAR(50),
                         data_nas DATE,
                         email VARCHAR(150),
@@ -37,7 +37,7 @@ CREATE TABLE medico (	crm BIGINT,
 );
 
 #Cria tabela atendente
-CREATE TABLE atendente (cpf BIGINT,
+CREATE TABLE atendente (cpf VARCHAR(14),
 						nome VARCHAR(50),
                         email VARCHAR(100),
                         endereco VARCHAR(100),
@@ -48,11 +48,11 @@ CREATE TABLE atendente (cpf BIGINT,
 );
 
 #Cria tabela de consultas
-CREATE TABLE consulta ( crm_medico BIGINT,
-                        cpf_paciente BIGINT,
+CREATE TABLE consulta ( crm_medico VARCHAR(15),
+                        cpf_paciente VARCHAR(14),
                         horario TIME,
                         data DATE,
-                        cnpj_clinica BIGINT,
+                        cnpj_clinica VARCHAR(20),
                         diagnostico VARCHAR(100),
                         receita VARCHAR(128),
                         PRIMARY KEY (data, horario),
@@ -70,7 +70,7 @@ CREATE TABLE admin (	id INT NOT NULL AUTO_INCREMENT,
 
 #Cria tabela de horarios
 CREATE TABLE horarios ( id INTEGER NOT NULL AUTO_INCREMENT,
-						crm_medico BIGINT,
+						crm_medico VARCHAR(15),
 						seg8  BIT, ter8  BIT, qua8  BIT, qui8  BIT, sex8  BIT,
                         seg9  BIT, ter9  BIT, qua9  BIT, qui9  BIT, sex9  BIT,
                         seg10 BIT, ter10 BIT, qua10 BIT, qui10 BIT, sex10 BIT,

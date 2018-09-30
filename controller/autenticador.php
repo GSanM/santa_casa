@@ -50,8 +50,6 @@ class Autenticador
         $result = $this->conn->query($sql);
         if ($result->num_rows == 1)
         {
-
-
             return 1;
         }
     }
