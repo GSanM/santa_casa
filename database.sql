@@ -17,7 +17,7 @@ CREATE TABLE paciente (	cpf VARCHAR(14),
                         email VARCHAR(150),
                         endereco VARCHAR(100),
                         telefone VARCHAR(50),
-                        usuario VARCHAR(256),
+                        usuario VARCHAR(256) NOT NULL UNIQUE,
                         senha VARCHAR(256),
 						PRIMARY KEY (cpf)
 );
@@ -31,7 +31,7 @@ CREATE TABLE medico (	crm VARCHAR(15),
                         endereco VARCHAR(100),
                         telefone VARCHAR(50),
                         especialidade VARCHAR(30),
-                        usuario VARCHAR(256),
+                        usuario VARCHAR(256) NOT NULL UNIQUE,
                         senha VARCHAR(256),
 						PRIMARY KEY (crm)
 );
@@ -42,7 +42,7 @@ CREATE TABLE atendente (cpf VARCHAR(14),
                         email VARCHAR(100),
                         endereco VARCHAR(100),
                         telefone VARCHAR(50),
-                        usuario VARCHAR(256),
+                        usuario VARCHAR(256) NOT NULL UNIQUE,
                         senha VARCHAR(256),
 						PRIMARY KEY (cpf)
 );
@@ -63,7 +63,7 @@ CREATE TABLE consulta ( crm_medico VARCHAR(15),
 
 #Cria tabela admin
 CREATE TABLE admin (	id INT NOT NULL AUTO_INCREMENT,
-						usuario VARCHAR(30),
+						usuario VARCHAR(30) NOT NULL UNIQUE,
 						senha VARCHAR(30),
                         PRIMARY KEY (id)
 );
