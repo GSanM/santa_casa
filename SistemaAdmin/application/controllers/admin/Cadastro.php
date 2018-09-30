@@ -47,6 +47,10 @@ class Cadastro extends CI_Controller {
 		$this->load->model('Clinica_model');
 		
 		$this->Clinica_model->inserir_registro();
+
+		// Duplicar os arquivos
+
+
 		
 		// Chamando a View de cadastro realizado com sucesso
 		$this->cadastrado_sucesso();

@@ -18,3 +18,15 @@ table {
 
 }
 
+td {
+    text-align: center;
+}
+
+.linha-selecionada:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+.left-column{
+    text-align: left;
+}

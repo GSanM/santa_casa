@@ -62,6 +62,45 @@ class Paciente_model extends CI_Model {
         return $query;
     }
 
+    public function get_lista_medicos($username) {
+        $this->db->select("medico.nome AS nome_medico, medico.especialidade, clinica.nome AS nome_clinica");
+        $this->db->from("paciente");
+        $this->db->join("consulta", "paciente.cpf = consulta.cpf_paciente");
+        $this->db->join("medico", "medico.crm = consulta.crm_medico");
+        $this->db->join("clinica", "clinica.cnpj = consulta.cnpj_clinica");
+
+
+        $query = $this->db->get();
+
+        return $query;
+    }
+
+    public function get_clinicas($username) {
+        $this->db->select("medico.nome AS nome_medico, medico.especialidade, clinica.nome AS nome_clinica");
+        $this->db->from("paciente");
+        $this->db->join("consulta", "paciente.cpf = consulta.cpf_paciente");
+        $this->db->join("medico", "medico.crm = consulta.crm_medico");
+        $this->db->join("clinica", "clinica.cnpj = consulta.cnpj_clinica");
+        $this->db->where("paciente.usuario = '$username'");
+
+        $query = $this->db->get();
+
+        return $query;
+    }
+
+    public function get_historico_consultas($username) {
+        $this->db->select("consulta.data, consulta.diagnostico, consulta.receita, medico.nome AS nome_medico");
+        $this->db->from("paciente");
+        $this->db->join("consulta", "paciente.cpf = consulta.cpf_paciente");
+        $this->db->join("medico", "medico.crm = consulta.crm_medico");
+        $this->db->where("paciente.usuario = '$username'");
+        $this->db->order_by("consulta.data", "ASC");
+
+        $query = $this->db->get();
+
+        return $query;
+    }
+
 }
 
 ?>
