@@ -20,7 +20,6 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<script src="js/atendente.js"></script>
-		<script src="js/tblhorario.js"></script>
 		<script type="text/javascript" src="js/post.js"></script>
 
 		<?php
@@ -91,31 +90,32 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="glyphicon glyphicon-plus-sign"></i></span>
 									<input id="crm" class="form-control" type="text" name="crm" placeholder="CRM" required>
-									<input id="spec" class="form-control" type="text" name="spec" placeholder="Especialidade" required>
+									<input id="sppaciente.phpec" class="form-control" type="text" name="spec" placeholder="Especialidade" required>
 								</div>
-								<button type="button" class="btn btn-default" id="btnHorarios">Horários</button>
+								<button type="button" class="btn btn-default" id="modal-click">Horários</button>
 
 								<!-- The Modal -->
 								<div id="myModal" class="modal">
 									<!-- Modal content -->
 									<div class="modal-content">
 										<span class="close">&times;</span>
-					
+										<h2>Horários de Atendimento</h2>
+										<p>Clique nos espaços da tabela para selecionar</p>
 										<table class="table-fill" id="tbl">
 											<thead>
 												<tr>
 												<th class="date-column"></th>
-												<th>08h00</th>
-												<th>09h00</th>
-												<th>10h00</th>
-												<th>11h00</th>
-												<th>12h00</th>
-												<th>13h00</th>
-												<th>14h00</th>
-												<th>15h00</th>
-												<th>16h00</th>
-												<th>17h00</th>
-												<th>18h00</th>
+												<th style="text-align: center;">08h</th>
+												<th style="text-align: center;">09h</th>
+												<th style="text-align: center;">10h</th>
+												<th style="text-align: center;">11h</th>
+												<th style="text-align: center;">12h</th>
+												<th style="text-align: center;">13h</th>
+												<th style="text-align: center;">14h</th>
+												<th style="text-align: center;">15h</th>
+												<th style="text-align: center;">16h</th>
+												<th style="text-align: center;">17h</th>
+												<th style="text-align: center;">18h</th>
 												</tr>
 											</thead>
 
@@ -198,9 +198,16 @@
 
 											</tbody>
 										</table>
+										<br>
+										<button type="button" class="btn btn-default" id="btnManha">Manhã</button>
+										<button type="button" class="btn btn-default" id="btnTarde">Tarde</button>
+										<button type="button" class="btn btn-default" id="btnTodos">Todos</button>
+										<br><br>
+										<button type="button" class="btn btn-default" id="btnSalvar">Salvar</button>
 									</div>
 								</div>
-								<script src="js/modal.js"></script>
+								<script src="js/modal_atendente.js"></script>
+								<script src="js/tblhorario.js"></script>
 						</div>
 
 						<!--Radio Buttons-->

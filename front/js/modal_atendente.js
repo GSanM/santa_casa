@@ -2,7 +2,8 @@
 var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
-var btn = document.getElementById("table-historico");
+var btn = document.getElementById("modal-click");
+var btnSalvar = document.getElementById("btnSalvar");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -14,6 +15,9 @@ btn.onclick = function() {
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
+    modal.style.display = "none";
+}
+btnSalvar.onclick = function() {
     modal.style.display = "none";
 }
 
