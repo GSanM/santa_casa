@@ -7,7 +7,7 @@ INSERT INTO clinica VALUES ('123456789101113', 'Clinica Santa Casa-SP', 'Carlos 
 INSERT INTO clinica VALUES ('123456789101114', 'Clinica Unimed Litoral Sul-RS', 'Joelson Muller', 'Rua das Pitangueiras, 333', '5330311103');
 
 #Insere Atendente
-INSERT INTO atendente VALUES ('00000000000', 'Jamile Souza', 'jami_souza@gmail.com', 'Rua da Jamile, 123', '5300000000', 'jal', 'admin');
+INSERT INTO atendente VALUES ('00000000000', 'Jamile Souza', 'jami_souza@gmail.com', '1994-10-12','Rua da Jamile, 123', '5300000000', 'jal', 'admin');
 
 #Insere Medicos
 INSERT INTO medico VALUES ('1111', '12300012301', 'Robervildson Silveira', '1973-12-06', 'robervilds@gmail.com', 'Rua do Rober, 123', '53987665781', 'Odontologista', 'rob', 'rob');
