@@ -7,6 +7,8 @@ CREATE TABLE clinica (	cnpj VARCHAR(20),
                         nome_gerente VARCHAR(50),
                         endereco VARCHAR(100),
                         telefone VARCHAR(50),
+                        usuario VARCHAR(256),
+                        senha VARCHAR(256),
 						PRIMARY KEY (cnpj)
 );	
 
@@ -89,7 +91,9 @@ CREATE TABLE horarios ( id INTEGER NOT NULL AUTO_INCREMENT,
 #Cria tabela que relaciona medico com clinica
 CREATE TABLE medico_clinica ( crm_medico   VARCHAR(15),
                               cnpj_clinica VARCHAR(20),
-                              PRIMARY KEY (crm_medico, cnpj_clinica),
-                              FOREIGN KEY (crm_medico) REFERENCES medico(crm),
-                              FOREIGN KEY (cnpj_clinica) REFERENCES clinica(cnpj)
-);
+                              id_horario   INTEGER NOT NULL,
+                              PRIMARY KEY (crm_medico, cnpj_clinica, id_horario),
+                              FOREIGN KEY (crm_medico)   REFERENCES medico(crm),
+                              FOREIGN KEY (cnpj_clinica) REFERENCES clinica(cnpj),
+                              FOREIGN KEY (id_horario)   REFERENCES horarios(id)
+) ENGINE=InnoDB;
