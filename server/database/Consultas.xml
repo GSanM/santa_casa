@@ -1,2 +1,19 @@
 <?xml version="1.0"?>
-<Consultas/>
+<Consultas>
+  <Consulta>
+    <nome-paciente>11111111111</nome-paciente>
+    <nome-medico>Robervildson Silveira</nome-medico>
+    <data>2018-02-03</data>
+    <horario/>
+    <receita/>
+    <diagnostico/>
+  </Consulta>
+  <Consulta>
+    <nome-paciente>11111111111</nome-paciente>
+    <nome-medico>Robervildson Silveira</nome-medico>
+    <data>2018-02-03</data>
+    <horario>09:07</horario>
+    <receita/>
+    <diagnostico/>
+  </Consulta>
+</Consultas>
