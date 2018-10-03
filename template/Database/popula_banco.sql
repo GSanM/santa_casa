@@ -28,7 +28,9 @@ INSERT INTO consulta VALUES ('3333', '11111111111', '14:00:00', '2018-12-25', '1
 INSERT INTO admin VALUES (1, 'admin', 'admin');
 
 #Insere no medico_clinica
-INSERT INTO 'medico_clinica' ('crm_medico', 'cnpj_clinica') VALUES ('2222', '123456789101112');
-INSERT INTO 'medico_clinica' ('crm_medico', 'cnpj_clinica') VALUES ('1111', '123456789101114');
-INSERT INTO 'medico_clinica' ('crm_medico', 'cnpj_clinica') VALUES ('3333', '123456789101113');
-INSERT INTO 'medico_clinica' ('crm_medico', 'cnpj_clinica') VALUES ('2222', '123456789101114');
+INSERT INTO `medico_clinica` (`crm_medico`, `cnpj_clinica`) VALUES ('2222', '123456789101112');
+INSERT INTO `medico_clinica` (`crm_medico`, `cnpj_clinica`) VALUES ('1111', '123456789101114');
+INSERT INTO `medico_clinica` (`crm_medico`, `cnpj_clinica`) VALUES ('3333', '123456789101113');
+INSERT INTO `medico_clinica` (`crm_medico`, `cnpj_clinica`) VALUES ('2222', '123456789101114');
+
+INSERT INTO consulta_pendente VALUES ('1111', '22222222222', '10:00:00', '2018-09-21', '123456789101112');

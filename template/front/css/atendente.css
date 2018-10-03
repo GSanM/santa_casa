@@ -69,6 +69,16 @@ input#appointment_hour_end_all, input#appointment_hour_end_mon, input#appointmen
     width: 50%;
 }
 
+.not-border {
+    border: 0px solid rgb(81, 231, 231);
+    border-radius: 5px;
+    border-top-left-radius: 0%;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 15px;
+    padding-top:0;
+}
+
 .border-medico {
     border: 0px solid rgb(81, 231, 231);
     border-radius: 5px;
@@ -76,7 +86,7 @@ input#appointment_hour_end_all, input#appointment_hour_end_mon, input#appointmen
 }
 
 /*Botao cadastro*/
-button#cadastrar, button#agenda, button#agendar, button#ver-agenda, button#alterar-consulta, button#sair, button#ver-agenda-medico, button#ver-agenda-paciente, button#confirmar-consulta {
+button#cadastrar, button#agenda, button#sair {
     height: 60px;
     width: 270px;
     background-color: rgb(76, 231, 140);
@@ -84,6 +94,18 @@ button#cadastrar, button#agenda, button#agendar, button#ver-agenda, button#alter
     border-radius: 5px;
     font-weight: bold;
     font-size: 23px;
+    margin-right: 10px;
+    border: 0;
+}
+
+button#agendar, button#ver-agenda, button#alterar-consulta, button#ver-agenda-medico, button#ver-agenda-paciente, button#confirmar-consulta {
+    height: 60px;
+    width: 150px;
+    background-color: rgb(76, 231, 140);
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 20px;
     margin-right: 10px;
     border: 0;
 }

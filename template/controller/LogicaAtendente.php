@@ -43,7 +43,7 @@ class Atendente
 
         $sql = "SELECT crm FROM medico WHERE nome = '$nome_medico'"; 
         $crm_consulta = $this->conn->query($sql);
-       $result_crm = $crm_consulta->fetch_array()['crm'];
+        $result_crm = $crm_consulta->fetch_array()['crm'];
 
        //buscar cpf paciente
 
@@ -54,6 +54,20 @@ class Atendente
         $sql = "INSERT INTO consulta (crm_medico, cpf_paciente, horario, data, cnpj_clinica) VALUES ('$result_crm', '$result_cpf', '$horario', '$data', '$clinica')";
 
         return submit($this->conn, $sql);
+    }
+
+    // CONFIRMA CONSULTA DO PACIENTE
+    public function confirmaConsulta($nome_medico, $nome_paciente, $horario, $data, $clinica)
+    {
+        $sql = "INSERT INTO consulta (crm_medico, cpf_paciente, horario, data, cnpj_clinica) VALUES ('$result_crm', '$result_cpf', '$horario', '$data', '$clinica')";
+        $adiciona = submit($this->conn, $sql);
+
+        $sql2 = "DELETE FROM consulta_pendente WHERE horario = $horario AND data - $data";
+        $deleta = submit($this->conn, $sql2);
+
+        if($adiciona && $deleta)
+            return 1;
+        return 0;        
     }
     
     // ALTERA
@@ -120,6 +134,7 @@ class Atendente
         return submit($this->conn, $sql);
     }
 
+    //OUTROS
     public function horariosMedico($crm)
     {
         $sql = "INSERT INTO horarios (  crm_medico,
@@ -147,6 +162,99 @@ class Atendente
                                         {$_POST['iseg17']}, {$_POST['iter17']}, {$_POST['iqua17']}, {$_POST['iqui17']}, {$_POST['isex17']},
                                         {$_POST['iseg18']}, {$_POST['iter18']}, {$_POST['iqua18']}, {$_POST['iqui18']}, {$_POST['isex18']})";
         return $this->conn->query($sql);
+    }
+
+    public function veConsultasPendentes()
+    {
+        $sql = "SELECT crm_medico, cpf_paciente, horario, data, cnpj_clinica FROM consulta_pendente";
+
+        $result = $this->conn->query($sql);
+        if ($result->num_rows > 0)
+        {   
+            echo '  <head>
+                        <link rel="stylesheet" type="text/css" href="../view/css/table.css">
+                    </head>';
+            echo '<br><table class="table-fill">
+                    <thead>
+                        <tr>
+                            <th class="text-left">Data</th>
+                            <th class="text-left">Hora</th>
+                            <th class="text-left">Paciente</th>
+                            <th class="text-left">Médico</th>
+                            <th class="text-left">Clínica</th>
+                        </tr>
+                    </thead>';
+    
+            while($row = $result->fetch_assoc())
+            {
+                $data =  $row['data'];
+                $hora =  $row['horario'];
+                $paciente = $row['cpf_paciente'];
+                $medico = $row['crm_medico'];
+                $clinica = $row['cnpj_clinica'];
+
+                echo "<tbody class=\"table-hover\">
+                        <tr>
+                            <td>$data</td>
+                            <td>$hora</td>";
+                
+                //Procura nome do cliente pelo CPF
+                $sql2 = "SELECT nome FROM paciente WHERE cpf = $paciente";
+                $result2 = $this->conn->query($sql2);
+                
+                if ($result2->num_rows > 0)
+                {
+                    $nome_paciente = $result2->fetch_assoc()['nome'];
+                    echo "<td class=\"text-left\">$nome_paciente</td>";
+                }
+                else
+                {
+                    echo "Paciente não encontrado.";
+                }
+                $result2->close();
+
+                //Procura nome do medico pelo CRM
+                $sql4 = "SELECT nome FROM medico WHERE crm = $medico";
+                $result4 = $this->conn->query($sql4);
+                
+                if ($result4->num_rows > 0)
+                {
+                    $nome_medico = $result4->fetch_assoc()['nome'];
+                    echo "<td class=\"text-left\">$nome_medico</td>";
+                }
+                else
+                {
+                    echo "Paciente não encontrado.";
+                }
+                $result4->close();
+                
+                //Procura nome da clinica pelo CNPJ
+                $sql3 = "SELECT nome FROM clinica WHERE cnpj = $clinica";
+                
+                $result3 = $this->conn->query($sql3);
+                if ($result3->num_rows > 0)
+                {
+                    $nome_clinica = $result3->fetch_assoc()['nome'];
+                    echo "<td class=\"text-left\">$nome_clinica</td>";
+                }
+                else
+                {
+                    echo "Clinica não encontrada.";
+                }
+                $result3->close();
+                
+                echo '</tr>';
+            }
+            $result->close();
+            echo '</tbody>
+                </table>';  
+        }
+        else
+        {
+            echo "<script>alert('Nenhuma consulta encontrada.');</script>";
+            echo "<br>";
+            echo "Nenhuma consulta encontrada.";
+        }
     }
 
     function __destruct()

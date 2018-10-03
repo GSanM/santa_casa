@@ -66,6 +66,17 @@ CREATE TABLE consulta ( crm_medico VARCHAR(15),
                         FOREIGN KEY (cnpj_clinica) REFERENCES clinica(cnpj)
 );
 
+CREATE TABLE consulta_pendente (crm_medico VARCHAR(15),
+								cpf_paciente VARCHAR(14),
+								horario TIME,
+								data DATE,
+								cnpj_clinica VARCHAR(20),
+								PRIMARY KEY (data, horario),
+								FOREIGN KEY (crm_medico) REFERENCES medico(crm),
+								FOREIGN KEY (cpf_paciente) REFERENCES paciente(cpf),
+								FOREIGN KEY (cnpj_clinica) REFERENCES clinica(cnpj)
+);
+
 #Cria tabela admin
 CREATE TABLE admin (	id INT NOT NULL AUTO_INCREMENT,
 						usuario VARCHAR(30) NOT NULL UNIQUE,
@@ -89,6 +100,24 @@ CREATE TABLE horarios ( id INTEGER NOT NULL AUTO_INCREMENT,
                         seg18 BIT, ter18 BIT, qua18 BIT, qui18 BIT, sex18 BIT,
                         PRIMARY KEY(id),
                         FOREIGN KEY (crm_medico) REFERENCES medico(crm)
+);
+
+#Cria tabela de horarios para consulta
+CREATE TABLE horarios_consulta (id INTEGER NOT NULL AUTO_INCREMENT,
+								crm_medico VARCHAR(15),
+								seg8  BIT, ter8  BIT, qua8  BIT, qui8  BIT, sex8  BIT,
+								seg9  BIT, ter9  BIT, qua9  BIT, qui9  BIT, sex9  BIT,
+								seg10 BIT, ter10 BIT, qua10 BIT, qui10 BIT, sex10 BIT,
+								seg11 BIT, ter11 BIT, qua11 BIT, qui11 BIT, sex11 BIT,
+								seg12 BIT, ter12 BIT, qua12 BIT, qui12 BIT, sex12 BIT,
+								seg13 BIT, ter13 BIT, qua13 BIT, qui13 BIT, sex13 BIT,
+								seg14 BIT, ter14 BIT, qua14 BIT, qui14 BIT, sex14 BIT,
+								seg15 BIT, ter15 BIT, qua15 BIT, qui15 BIT, sex15 BIT,
+								seg16 BIT, ter16 BIT, qua16 BIT, qui16 BIT, sex16 BIT,
+								seg17 BIT, ter17 BIT, qua17 BIT, qui17 BIT, sex17 BIT,
+								seg18 BIT, ter18 BIT, qua18 BIT, qui18 BIT, sex18 BIT,
+								PRIMARY KEY(id),
+								FOREIGN KEY (crm_medico) REFERENCES medico(crm)
 );
 
 #Cria tabela que relaciona medico com clinica
