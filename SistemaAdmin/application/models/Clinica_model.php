@@ -15,6 +15,7 @@ class Clinica_model extends CI_Model {
     public $endereco;
     public $telefone;
 
+
     public function __construct() {
         parent::__construct();
     }
@@ -32,7 +33,20 @@ class Clinica_model extends CI_Model {
         $this->endereco     = $_POST['endereco'];
         $this->telefone     = $_POST['telefone'];
 
+        $dadosAtendente = array(
+            'cpf'          => '000000000000',
+            'nome'         => 'admin',
+            'email'        => 'admin@admin.com',
+            'endereco'     => 'admin',
+            'telefone'     => '000000',
+            'usuario'      => $_POST['usuario'],
+            'senha'        => $_POST['senha'],
+            'cnpj_clinica' => $_POST['cnpj']
+        );
+
+
         $this->db->insert('clinica', $this);
+        $this->db->insert('atendente', $dadosAtendente);
     }
 
     /**

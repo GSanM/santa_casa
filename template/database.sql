@@ -45,9 +45,11 @@ CREATE TABLE atendente (cpf VARCHAR(14),
                         data_nas DATE,
                         endereco VARCHAR(100),
                         telefone VARCHAR(50),
-                        usuario VARCHAR(256) NOT NULL UNIQUE,
+                        usuario VARCHAR(256) NOT NULL,
                         senha VARCHAR(256),
-						PRIMARY KEY (cpf)
+                        cnpj_clinica VARCHAR(20),
+						PRIMARY KEY (cpf, cnpj_clinica),
+                        FOREIGN KEY (cnpj_clinica) REFERENCES clinica(cnpj)
 );
 
 #Cria tabela de consultas
