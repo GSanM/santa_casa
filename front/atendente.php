@@ -294,14 +294,14 @@
 
 			<!--Agenda-->
 			<div class="collapse" id="agenda-div">
-				<div class="border">
-					<h2>Agenda</h2>
+				<div class="not-border">
+					<h2>Consultas</h2>
 					<div class="btn-group">
-						<button class="btn btn-default" id="agendar">Agendar</button>
-						<button class="btn btn-default" id="alterar-consulta">Alterar</button>
-						<button type="submit" class="btn btn-default" id="confirmar-consulta" onclick="ajaxPost('../server/mostrarConsultasPendentes.php', '#resultado-consulta-pendente')">Confirmar</button>
-						<button class="btn btn-default" id="ver-agenda-medico" onclick="ajaxPost('../server/verTodosMedicos.php', '#result-verAgenda')">Medico</button>
-						<button class="btn btn-default" id="ver-agenda-paciente">Paciente</button>
+						<button class="btn btn-default" id="agendar"><i class="glyphicon glyphicon-calendar"></i> Agendar</button>
+						<button class="btn btn-default" id="alterar-consulta"><i class="glyphicon glyphicon-wrench"></i> Alterar</button>
+						<button type="submit" class="btn btn-default" id="confirmar-consulta" onclick="ajaxPost('../model/getConsultasPendentes.php', '#resultado-consulta-pendente')"> <i class="glyphicon glyphicon-check"></i> Confirmar</button>
+						<button class="btn btn-default" id="ver-agenda-medico" onclick="ajaxPost('../server/verTodosMedicos.php', '#result-verAgenda')"><i class="glyphicon glyphicon-plus"></i> Medico</button>
+						<button class="btn btn-default" id="ver-agenda-paciente"><i class="glyphicon glyphicon-user"></i> Paciente</button>
 					</div>
 
 					
@@ -333,13 +333,14 @@
 								</datalist>
 							</div>
 
-							<!--Horário-->
+							
+							<!--Horário
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-dashboard"></i></span>
 								<input id="appointment_day" name="appointment_day" class="form-control" type="date" required>
 								<input id="appointment_hour" name="appointment_hour" class="form-control" type="time" required>
 							</div>
-
+							-->
 							<div class="submit-button" id="submit-agenda">
 								<button type="submit" class="btn btn-default" id="btnAgendar" onclick="ajaxPost('../server/agendar.php', '#result-agendar')">Agendar</button>
 							</div>
