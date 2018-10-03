@@ -34,7 +34,7 @@ class Clinica_model extends CI_Model {
         $this->telefone     = $_POST['telefone'];
 
         $dadosAtendente = array(
-            'cpf'          => '000000000000',
+            'cpf'          => 'admin',
             'nome'         => 'admin',
             'email'        => 'admin@admin.com',
             'endereco'     => 'admin',
