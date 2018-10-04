@@ -57,16 +57,29 @@ class Atendente
     }
 
     // CONFIRMA CONSULTA DO PACIENTE
-    public function confirmaConsulta($nome_medico, $nome_paciente, $horario, $data, $clinica)
-    {
-        $sql = "INSERT INTO consulta (crm_medico, cpf_paciente, horario, data, cnpj_clinica) VALUES ('$result_crm', '$result_cpf', '$horario', '$data', '$clinica')";
-        $adiciona = submit($this->conn, $sql);
+    public function confirmaConsulta($horario, $data)
+    {   
+        $sql = "SELECT * FROM consulta_pendente WHERE horario LIKE '{$horario}' AND data LIKE '{$data}'";
+        $consulta = $this->conn->query($sql);
+        
+        $row = $consulta->fetch_assoc();
 
-        $sql2 = "DELETE FROM consulta_pendente WHERE horario = $horario AND data - $data";
-        $deleta = submit($this->conn, $sql2);
+        $crm_medico = $row['crm_medico'];
+        $cpf_paciente = $row['cpf_paciente'];
+        $clinica = $row['cnpj_clinica'];
+        
+        $sql2 = "INSERT INTO consulta (crm_medico, cpf_paciente, horario, data, cnpj_clinica) VALUES ('$crm_medico', '$cpf_paciente', '$horario', '$data', '$clinica')";
+        $adiciona = submit($this->conn, $sql2);
+
+        $sql3 = "DELETE FROM consulta_pendente WHERE horario LIKE '{$horario}' AND data LIKE '{$data}'";
+        $deleta = submit($this->conn, $sql3);
 
         if($adiciona && $deleta)
+        {
+            echo "Consulta confirmada.";
             return 1;
+        }
+        echo "Falha ao confirmar consulta.";
         return 0;        
     }
     
@@ -174,7 +187,7 @@ class Atendente
             echo '  <head>
                         <link rel="stylesheet" type="text/css" href="../view/css/table.css">
                     </head>';
-            echo '<br><table class="table-fill">
+            echo '<br><table id="table-pendentes" class="table-fill">
                     <thead>
                         <tr>
                             <th class="text-left">Data</th>
@@ -182,9 +195,10 @@ class Atendente
                             <th class="text-left">Paciente</th>
                             <th class="text-left">Médico</th>
                             <th class="text-left">Clínica</th>
+                            <th class="text-left">Confirmar</th>
                         </tr>
                     </thead>';
-    
+            $i = 1;
             while($row = $result->fetch_assoc())
             {
                 $data =  $row['data'];
@@ -242,8 +256,22 @@ class Atendente
                     echo "Clinica não encontrada.";
                 }
                 $result3->close();
-                
+                echo '<script>';
+                echo '$("#btnConfirma'.$i.'").click(function() {
+                        $.ajax({
+                            type: "POST",
+                            url: "../model/confirmaConsulta.php",
+                            data: { horario: "'.$hora.'", data_: "'.$data.'"}
+                            }).done(function(msg) {
+                                    alert(msg);
+                                    $("#resultado-consulta-pendente").collapse("toggle");
+                                    $("#resultado-consulta-pendente").collapse("toggle");
+                            });    
+                    });';
+                echo '</script>';
+                echo '<td style="text-align: center;" ><button type="button" id="btnConfirma'.$i.'" class="btn btn-default"><i class="glyphicon glyphicon-ok"></i></button></td>';
                 echo '</tr>';
+                $i += 1;
             }
             $result->close();
             echo '</tbody>

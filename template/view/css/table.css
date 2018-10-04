@@ -1,12 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald);
 
-body {
-  background-color: #3e94ec;
-  font-family: 'Oswald', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  text-rendering: optimizeLegibility;
-}
 
 div.table-title {
   display: block;
@@ -37,6 +30,7 @@ div.table-title {
   margin: auto;
   max-width: 600px;
   padding:5px;
+  margin-left: 0;
   width: 100%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   animation: float 5s infinite;
