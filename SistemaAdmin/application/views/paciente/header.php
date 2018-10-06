@@ -30,8 +30,6 @@
                 <li><a href="<?php echo base_url('paciente/agenda')?>">Consultas</a></li>
                 <li><a href="<?php echo base_url('paciente/agendar')?>">Agendar</a></li>
                 <li><a href="<?php echo base_url('paciente/historico')?>">Historico</a></li>
-                <li><a href="<?php echo base_url('paciente/clinicas')?>">Clinicas</a></li>
-                <li><a href="<?php echo base_url('paciente/pacientes')?>">Medicos</a></li>
                 <li><a href="<?php echo base_url('autenticacao/logout')?>">Sair</a></li>
             </ul>
         </nav>	

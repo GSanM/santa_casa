@@ -14,7 +14,7 @@ class Agendar extends CI_Controller {
             return;
         }
 
-        $dados['query'] = $this->Paciente_model->get_lista_medicos($_SESSION['usuario']);
+        $dados['query'] = $this->Paciente_model->get_todos_medicos();
 
         $this->load->view('paciente/agendar', $dados);
         

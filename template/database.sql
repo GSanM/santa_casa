@@ -7,8 +7,6 @@ CREATE TABLE clinica (	cnpj VARCHAR(20),
                         nome_gerente VARCHAR(50),
                         endereco VARCHAR(100),
                         telefone VARCHAR(50),
-                        usuario VARCHAR(256),
-                        senha VARCHAR(256),
 						PRIMARY KEY (cnpj)
 );	
 
@@ -84,48 +82,40 @@ CREATE TABLE admin (	id INT NOT NULL AUTO_INCREMENT,
                         PRIMARY KEY (id)
 );
 
-#Cria tabela de horarios
-CREATE TABLE horarios ( id INTEGER NOT NULL AUTO_INCREMENT,
-						crm_medico VARCHAR(15),
-						seg8  BIT, ter8  BIT, qua8  BIT, qui8  BIT, sex8  BIT,
-                        seg9  BIT, ter9  BIT, qua9  BIT, qui9  BIT, sex9  BIT,
-                        seg10 BIT, ter10 BIT, qua10 BIT, qui10 BIT, sex10 BIT,
-                        seg11 BIT, ter11 BIT, qua11 BIT, qui11 BIT, sex11 BIT,
-                        seg12 BIT, ter12 BIT, qua12 BIT, qui12 BIT, sex12 BIT,
-                        seg13 BIT, ter13 BIT, qua13 BIT, qui13 BIT, sex13 BIT,
-                        seg14 BIT, ter14 BIT, qua14 BIT, qui14 BIT, sex14 BIT,
-                        seg15 BIT, ter15 BIT, qua15 BIT, qui15 BIT, sex15 BIT,
-                        seg16 BIT, ter16 BIT, qua16 BIT, qui16 BIT, sex16 BIT,
-                        seg17 BIT, ter17 BIT, qua17 BIT, qui17 BIT, sex17 BIT,
-                        seg18 BIT, ter18 BIT, qua18 BIT, qui18 BIT, sex18 BIT,
-                        PRIMARY KEY(id),
-                        FOREIGN KEY (crm_medico) REFERENCES medico(crm)
-);
 
 #Cria tabela de horarios para consulta
 CREATE TABLE horarios_consulta (id INTEGER NOT NULL AUTO_INCREMENT,
 								crm_medico VARCHAR(15),
-								seg8  BIT, ter8  BIT, qua8  BIT, qui8  BIT, sex8  BIT,
-								seg9  BIT, ter9  BIT, qua9  BIT, qui9  BIT, sex9  BIT,
-								seg10 BIT, ter10 BIT, qua10 BIT, qui10 BIT, sex10 BIT,
-								seg11 BIT, ter11 BIT, qua11 BIT, qui11 BIT, sex11 BIT,
-								seg12 BIT, ter12 BIT, qua12 BIT, qui12 BIT, sex12 BIT,
-								seg13 BIT, ter13 BIT, qua13 BIT, qui13 BIT, sex13 BIT,
-								seg14 BIT, ter14 BIT, qua14 BIT, qui14 BIT, sex14 BIT,
-								seg15 BIT, ter15 BIT, qua15 BIT, qui15 BIT, sex15 BIT,
-								seg16 BIT, ter16 BIT, qua16 BIT, qui16 BIT, sex16 BIT,
-								seg17 BIT, ter17 BIT, qua17 BIT, qui17 BIT, sex17 BIT,
-								seg18 BIT, ter18 BIT, qua18 BIT, qui18 BIT, sex18 BIT,
+								seg8  BIT  DEFAULT 0, ter8  BIT  DEFAULT 0, qua8  BIT  DEFAULT 0, qui8  BIT  DEFAULT 0, sex8  BIT  DEFAULT 0,
+								seg9  BIT  DEFAULT 0, ter9  BIT  DEFAULT 0, qua9  BIT  DEFAULT 0, qui9  BIT  DEFAULT 0, sex9  BIT  DEFAULT 0,
+								seg10 BIT  DEFAULT 0, ter10 BIT  DEFAULT 0, qua10 BIT  DEFAULT 0, qui10 BIT  DEFAULT 0, sex10 BIT  DEFAULT 0,
+								seg11 BIT  DEFAULT 0, ter11 BIT  DEFAULT 0, qua11 BIT  DEFAULT 0, qui11 BIT  DEFAULT 0, sex11 BIT  DEFAULT 0,
+								seg12 BIT  DEFAULT 0, ter12 BIT  DEFAULT 0, qua12 BIT  DEFAULT 0, qui12 BIT  DEFAULT 0, sex12 BIT  DEFAULT 0,
+								seg13 BIT  DEFAULT 0, ter13 BIT  DEFAULT 0, qua13 BIT  DEFAULT 0, qui13 BIT  DEFAULT 0, sex13 BIT  DEFAULT 0,
+								seg14 BIT  DEFAULT 0, ter14 BIT  DEFAULT 0, qua14 BIT  DEFAULT 0, qui14 BIT  DEFAULT 0, sex14 BIT  DEFAULT 0,
+								seg15 BIT  DEFAULT 0, ter15 BIT  DEFAULT 0, qua15 BIT  DEFAULT 0, qui15 BIT  DEFAULT 0, sex15 BIT  DEFAULT 0,
+								seg16 BIT  DEFAULT 0, ter16 BIT  DEFAULT 0, qua16 BIT  DEFAULT 0, qui16 BIT  DEFAULT 0, sex16 BIT  DEFAULT 0,
+								seg17 BIT  DEFAULT 0, ter17 BIT  DEFAULT 0, qua17 BIT  DEFAULT 0, qui17 BIT  DEFAULT 0, sex17 BIT  DEFAULT 0,
+								seg18 BIT  DEFAULT 0, ter18 BIT  DEFAULT 0, qua18 BIT  DEFAULT 0, qui18 BIT  DEFAULT 0, sex18 BIT  DEFAULT 0,
 								PRIMARY KEY(id),
 								FOREIGN KEY (crm_medico) REFERENCES medico(crm)
 );
 
 #Cria tabela que relaciona medico com clinica
-CREATE TABLE medico_clinica ( crm_medico   VARCHAR(15),
-                              cnpj_clinica VARCHAR(20),
-                              id_horario   INTEGER NOT NULL,
-                              PRIMARY KEY (crm_medico, cnpj_clinica, id_horario),
-                              FOREIGN KEY (crm_medico)   REFERENCES medico(crm),
-                              FOREIGN KEY (cnpj_clinica) REFERENCES clinica(cnpj),
-                              FOREIGN KEY (id_horario)   REFERENCES horarios(id)
+CREATE TABLE medico_clinica (   crm_medico   VARCHAR(15),
+                                cnpj_clinica VARCHAR(20),
+                                seg8  BIT  DEFAULT 0, ter8  BIT  DEFAULT 0, qua8  BIT  DEFAULT 0, qui8  BIT  DEFAULT 0, sex8  BIT  DEFAULT 0,
+                                seg9  BIT  DEFAULT 0, ter9  BIT  DEFAULT 0, qua9  BIT  DEFAULT 0, qui9  BIT  DEFAULT 0, sex9  BIT  DEFAULT 0,
+                                seg10 BIT  DEFAULT 0, ter10 BIT  DEFAULT 0, qua10 BIT  DEFAULT 0, qui10 BIT  DEFAULT 0, sex10 BIT  DEFAULT 0,
+                                seg11 BIT  DEFAULT 0, ter11 BIT  DEFAULT 0, qua11 BIT  DEFAULT 0, qui11 BIT  DEFAULT 0, sex11 BIT  DEFAULT 0,
+                                seg12 BIT  DEFAULT 0, ter12 BIT  DEFAULT 0, qua12 BIT  DEFAULT 0, qui12 BIT  DEFAULT 0, sex12 BIT  DEFAULT 0,
+                                seg13 BIT  DEFAULT 0, ter13 BIT  DEFAULT 0, qua13 BIT  DEFAULT 0, qui13 BIT  DEFAULT 0, sex13 BIT  DEFAULT 0,
+                                seg14 BIT  DEFAULT 0, ter14 BIT  DEFAULT 0, qua14 BIT  DEFAULT 0, qui14 BIT  DEFAULT 0, sex14 BIT  DEFAULT 0,
+                                seg15 BIT  DEFAULT 0, ter15 BIT  DEFAULT 0, qua15 BIT  DEFAULT 0, qui15 BIT  DEFAULT 0, sex15 BIT  DEFAULT 0,
+                                seg16 BIT  DEFAULT 0, ter16 BIT  DEFAULT 0, qua16 BIT  DEFAULT 0, qui16 BIT  DEFAULT 0, sex16 BIT  DEFAULT 0,
+                                seg17 BIT  DEFAULT 0, ter17 BIT  DEFAULT 0, qua17 BIT  DEFAULT 0, qui17 BIT  DEFAULT 0, sex17 BIT  DEFAULT 0,
+                                seg18 BIT  DEFAULT 0, ter18 BIT  DEFAULT 0, qua18 BIT  DEFAULT 0, qui18 BIT  DEFAULT 0, sex18 BIT  DEFAULT 0,
+                                PRIMARY KEY (crm_medico, cnpj_clinica),
+                                FOREIGN KEY (crm_medico)   REFERENCES medico(crm),
+                                FOREIGN KEY (cnpj_clinica) REFERENCES clinica(cnpj)
 ) ENGINE=InnoDB;

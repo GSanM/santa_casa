@@ -50,12 +50,13 @@ class Paciente_model extends CI_Model {
         }
     }
 
-    public function get_agenda($cpf) {
+    public function get_agenda($usuario) {
         $this->db->select('data, horario, medico.nome AS nome_medico, clinica.nome AS nome_clinica');    
         $this->db->from('paciente');
         $this->db->join('consulta', 'paciente.cpf = consulta.cpf_paciente');
         $this->db->join('medico', 'medico.crm = consulta.crm_medico');
         $this->db->join('clinica', 'clinica.cnpj = consulta.cnpj_clinica');
+        $this->db->where("paciente.usuario = '$usuario'");
 
         $query = $this->db->get();
 
@@ -75,13 +76,11 @@ class Paciente_model extends CI_Model {
         return $query;
     }
 
-    public function get_clinicas($username) {
+    public function get_todos_medicos() {
         $this->db->select("medico.nome AS nome_medico, medico.especialidade, clinica.nome AS nome_clinica");
-        $this->db->from("paciente");
-        $this->db->join("consulta", "paciente.cpf = consulta.cpf_paciente");
-        $this->db->join("medico", "medico.crm = consulta.crm_medico");
-        $this->db->join("clinica", "clinica.cnpj = consulta.cnpj_clinica");
-        $this->db->where("paciente.usuario = '$username'");
+        $this->db->from("medico");
+        $this->db->join("medico_clinica", "medico_clinica.crm_medico = medico.crm");
+        $this->db->join("clinica", "clinica.cnpj = medico_clinica.cnpj_clinica");
 
         $query = $this->db->get();
 
