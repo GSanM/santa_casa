@@ -62,6 +62,14 @@ class Medico_model extends CI_Model {
 
         return $query;
     }
+
+    public function get_horario_por_nome($nome) {
+        $this->db->select('*');
+        $this->db->from('medico');
+        $this->db->join('medico_clinica', 'medico.crm = medico_clinica.crm_medico');
+
+        return $this->db->get();
+    }
 }
 
 ?>

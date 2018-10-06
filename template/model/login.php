@@ -15,6 +15,11 @@ if($_POST['pac_doc'] == 'patient')
 {
     if($autenticador->login(preg_replace('/[^A-Za-z0-9]/', '', $cpf), $senha, 'paciente'))
     {
+        session_start();
+        $_SESSION['cpf']   = $cpf;
+        $_SESSION['senha'] = $senha;
+
+
         header("Location: ../front/paciente.php");
     }
     else 

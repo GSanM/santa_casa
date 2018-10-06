@@ -5,14 +5,24 @@ $(document).ready(function(){
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
     });
+
+    document.getElementById("iMedico").value = sessionStorage.getItem("nome_medico");
   });
 
+function getHorarioMedico(x) {
+  var nome_medico = document.getElementById("iMedico").value;
+  sessionStorage.setItem('nome_medico', nome_medico);
 
+  document.getElementById("formAgendar").submit();
+
+}
+
+/*
   $(function() {
     
     $( ".dialog" ).click(function(){        
-        $('#horarioMedico').html($(this).html()); 
 
-        alert($(this).html);
+        //alert($(this).text);
     });
 });
+*/

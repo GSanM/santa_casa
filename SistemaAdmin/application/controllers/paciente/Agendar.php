@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Agendar extends CI_Controller {
+    private $query;
 
     public function __construct() {
         parent::__construct();
@@ -18,5 +19,17 @@ class Agendar extends CI_Controller {
 
         $this->load->view('paciente/agendar', $dados);
         
-	}
+    }
+    
+    public function envio() {
+        if (session_status() == PHP_SESSION_NONE) {
+            $this->load->view('login');
+            return;
+        }
+
+        
+        $dados['query'] = $this->Paciente_model->get_clinicas_por_nome_medico($_POST['iMedico']);
+
+        $this->load->view('paciente/agendar', $dados);
+    }
 }

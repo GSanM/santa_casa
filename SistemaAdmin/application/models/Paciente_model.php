@@ -100,6 +100,17 @@ class Paciente_model extends CI_Model {
         return $query;
     }
 
+    public function get_clinicas_por_nome_medico($nome_medico) {
+        $this->db->select("clinica.nome AS nome_clinica");
+        $this->db->distinct();
+        $this->db->from('medico');
+        $this->db->join('medico_clinica', 'medico_clinica.crm_medico = medico.crm');
+        $this->db->join('clinica', 'clinica.cnpj = medico_clinica.cnpj_clinica');
+
+        return $this->db->get();
+
+    }
+
 }
 
 ?>
