@@ -7,6 +7,11 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/medico.css')?>">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+<script src="<?php echo base_url('assets/js/jquery-3.3.1.js')?>"></script>
+<script src="<?php echo base_url('assets/js/bootstrap.min.js')?>"></script>
+    
+
+
 <link href='https://fonts.googleapis.com/css?family=Amiko' rel='stylesheet'>
 </head>
 

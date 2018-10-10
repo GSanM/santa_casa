@@ -35,6 +35,10 @@ class Autenticador
             {
                 $_SESSION['crm'] = $row['crm'];
                 $_SESSION['especialidade'] = $row['especialidade'];
+            } 
+            elseif ($cargo == 'atendente') 
+            {
+                $_SESSION['cnpj_clinica'] = $row['cnpj_clinica'];
             }
 
             return 1;
@@ -53,6 +57,7 @@ class Autenticador
             return 1;
         }
     }
+
 }
 
 ?>

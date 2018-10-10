@@ -309,14 +309,14 @@
 		
 						<h3>Agendar Consulta</h3>
 		
-						<form name="form_agendar" id="form_agendar" onsubmit="return false;">
+						<form name="form_agendar" id="form_agendar" style="width:30%" onsubmit="return false;">
 
 							<!--Nome Paciente-->
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 								<input list="patients" id="patient-name" class="form-control" type="text" name="patient-name" placeholder="Nome do Paciente" required>
 								<datalist id="patients">
-								<?php
+									<?php
 										require_once "../model/getPacientes.php";
 									?>
 								</datalist>
@@ -333,14 +333,17 @@
 								</datalist>
 							</div>
 
-							
-							<!--Horário
 							<div class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-dashboard"></i></span>
 								<input id="appointment_day" name="appointment_day" class="form-control" type="date" required>
-								<input id="appointment_hour" name="appointment_hour" class="form-control" type="time" required>
+								<input list="hours" id="appointment_hour" name="appointment_hour" class="form-control" type="time" required>
+								<datalist id="hours">
+									<?php for($i = 8; $i <= 18; $i++):?>
+										<option value="<?php echo $i?>:00"></option>
+									<?php endfor?>
+								</datalist>
 							</div>
-							-->
+
 							<div class="submit-button" id="submit-agenda">
 								<button type="submit" class="btn btn-default" id="btnAgendar" onclick="ajaxPost('../server/agendar.php', '#result-agendar')">Agendar</button>
 							</div>

@@ -117,6 +117,10 @@ class Paciente_model extends CI_Model {
         return $queryMerged;
     }
 
+    public function get_horarios_do_medico($nome_medico) {
+
+    }
+
 }
 
 ?>

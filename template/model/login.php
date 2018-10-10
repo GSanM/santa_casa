@@ -43,9 +43,11 @@ else if($_POST['pac_doc'] == 'doctor')
     }
 }
 else if($_POST['pac_doc'] == 'clerk') 
-{    
+{   
     if($autenticador->login(preg_replace('/[^A-Za-z0-9]/', '', $cpf), $senha, 'atendente')) 
     {
+        //print_r($_SESSION);
+
         header("Location: ../front/atendente.php");
     }
 }

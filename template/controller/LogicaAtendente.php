@@ -20,7 +20,7 @@ class Atendente
     public function adicionaPaciente($cpf, $nome, $data_nas, $email, $end, $tel, $usuario, $senha)
     {   
         $sql = "INSERT INTO paciente VALUES ($cpf, '$nome', '$data_nas', '$email', '$end', '$tel', '$usuario', '$senha')";
-       
+
         return submit($this->conn, $sql);
     }
 
@@ -150,7 +150,9 @@ class Atendente
     //OUTROS
     public function horariosMedico($crm)
     {
-        $sql = "INSERT INTO horarios (  crm_medico,
+        session_start();
+        $cnpj = $_SESSION['cnpj_clinica'];
+        $sql = "INSERT INTO medico_clinica (  crm_medico, cnpj_clinica,
                                         seg8  , ter8  , qua8  , qui8  , sex8  ,
                                         seg9  , ter9  , qua9  , qui9  , sex9  ,
                                         seg10 , ter10 , qua10 , qui10 , sex10 ,
@@ -162,7 +164,7 @@ class Atendente
                                         seg16 , ter16 , qua16 , qui16 , sex16 ,
                                         seg17 , ter17 , qua17 , qui17 , sex17 ,
                                         seg18 , ter18 , qua18 , qui18 , sex18) 
-                                        VALUES ($crm, 
+                                        VALUES ($crm, $cnpj,
                                         {$_POST['iseg8']},  {$_POST['iter8']},  {$_POST['iqua8']},  {$_POST['iqui8']},  {$_POST['isex8']},
                                         {$_POST['iseg9']},  {$_POST['iter9']},  {$_POST['iqua9']},  {$_POST['iqui9']},  {$_POST['isex9']},
                                         {$_POST['iseg10']}, {$_POST['iter10']}, {$_POST['iqua10']}, {$_POST['iqui10']}, {$_POST['isex10']},

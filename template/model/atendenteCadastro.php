@@ -34,14 +34,13 @@ elseif($_POST['pac_doc'] == 'doctor')
     if( $atendente->adicionaMedico($crm, preg_replace('/[^A-Za-z0-9]/', '', $cpf), $nome, $data_nas, $email, $endereco, $telefone, $especialidade, $usuario, $senha) ) 
     {
         echo "<script>alert(\"Cadastro realizado com sucesso!\");
-            window.location = \"../front/atendente.php\" </script>";        
+             window.location = \"../front/atendente.php\" </script>";        
     } 
     else 
     {
         echo "<script>alert(\"Erro. Médico já cadastrado.\");
-                window.location = \"../front/atendente.php\"</script>";
+            window.location = \"../front/atendente.php\"</script>";
     }
 }
-
 
 ?>

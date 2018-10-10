@@ -61,6 +61,10 @@
     </datalist>
     <br><br><br>
 
+    <label>Data</label>
+    <input id="iData" name="iData" type="date" placeholder="Digite a data">
+    <br><br><br>
+
     <label>Horário</label>
     <input id="iHorario" name="iHorario" list="lista_horarios" type="text" placeholder="Digite o horário">
     <datalist id="lista_horarios">
@@ -74,7 +78,7 @@
 
 
 
-    <button>Agendar</button>
+    <button class="btn" style="align-content: center;">Agendar</button>
 </form>
 
 <?php require_once ('application/views/footer.php')?>
