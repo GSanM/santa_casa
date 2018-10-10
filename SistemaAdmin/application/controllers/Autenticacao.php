@@ -69,8 +69,9 @@ class Autenticacao extends CI_Controller {
 
             // Adicionar dados do usuario na Session
             $this->session->set_userdata($dados_usuario);
+            $dados_consulta['query'] = $this->Consulta_model->get_consultas_por_medico($this->session->userdata('crm'));
 
-            $this->load->view('medico/index', $dados_usuario);
+            $this->load->view('medico/agenda', $dados_consulta);
         } 
         else if ($usuarioLogadoComo == "paciente") { 
             

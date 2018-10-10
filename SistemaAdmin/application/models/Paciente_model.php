@@ -20,6 +20,8 @@ class Paciente_model extends CI_Model {
     public $senha;
     public $usuario;
 
+    private $allDoctors = array();
+
     public function __construct() {
         parent::__construct();
     }
@@ -72,6 +74,7 @@ class Paciente_model extends CI_Model {
 
 
         $query = $this->db->get();
+        
 
         return $query;
     }
@@ -101,14 +104,17 @@ class Paciente_model extends CI_Model {
     }
 
     public function get_clinicas_por_nome_medico($nome_medico) {
-        $this->db->select("clinica.nome AS nome_clinica");
+        $this->db->select("clinica.nome AS nome_clinica_por_medico");
         $this->db->distinct();
         $this->db->from('medico');
         $this->db->join('medico_clinica', 'medico_clinica.crm_medico = medico.crm');
         $this->db->join('clinica', 'clinica.cnpj = medico_clinica.cnpj_clinica');
+        $this->db->where("medico.nome = '$nome_medico'");
 
-        return $this->db->get();
+        $query = $this->db->get()->result_array();
+        $queryMerged = array_merge($query, $this->get_todos_medicos()->result_array());
 
+        return $queryMerged;
     }
 
 }

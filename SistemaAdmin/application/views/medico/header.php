@@ -19,7 +19,6 @@
 		
 		<nav class="menu">
             <ul>
-                <li><a href="<?php echo base_url('medico/index')?>">Home</a></li>
                 <li><a href="<?php echo base_url('medico/agenda')?>">Agenda</a></li>
                 <li><a href="<?php echo base_url('medico/clinicas')?>">Clinicas</a></li>
                 <li><a href="<?php echo base_url('medico/pacientes')?>">Pacientes</a></li>

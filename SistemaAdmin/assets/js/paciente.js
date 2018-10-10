@@ -9,7 +9,7 @@ $(document).ready(function(){
     document.getElementById("iMedico").value = sessionStorage.getItem("nome_medico");
   });
 
-function getHorarioMedico(x) {
+function getClinicasMedico(x) {
   var nome_medico = document.getElementById("iMedico").value;
   sessionStorage.setItem('nome_medico', nome_medico);
 
