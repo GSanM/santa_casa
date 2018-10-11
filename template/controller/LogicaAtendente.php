@@ -208,14 +208,14 @@ class Atendente
         return $this->conn->query($sql);
     }
 
-    private function get_cpf_patient_by_name($nome_paciente) {
+    public function get_cpf_patient_by_name($nome_paciente) {
         $sql = "SELECT cpf FROM paciente WHERE nome LIKE '$nome_paciente'";
         $result = $this->conn->query($sql)->fetch_array();
 
         return $result[0];
     }
 
-    private function get_crm_doctor_by_name($nome_medico) {
+    public function get_crm_doctor_by_name($nome_medico) {
         $sql = "SELECT crm FROM medico WHERE nome LIKE '$nome_medico'";
         $result = $this->conn->query($sql)->fetch_array();
 
