@@ -11,7 +11,8 @@ $result = $conn->query($sql);
 echo '<datalist id="patients">';
 while ($row = $result->fetch_assoc())
 {
-    echo "<option value='".$row['cpf']."'>".$row['nome']." (".$row['cpf'].")</option>";
+    $nome_paciente = $row['nome'];
+    echo "<option value='$nome_paciente'></option>";
 }
 echo '</datalist>';
 

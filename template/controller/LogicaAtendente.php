@@ -40,17 +40,15 @@ class Atendente
     public function adicionaConsulta($nome_medico, $nome_paciente, $horario, $data, $clinica)
     {
         //buscar crm medico 
-
-        $sql = "SELECT crm FROM medico WHERE nome = '$nome_medico'"; 
+        $sql = "SELECT crm FROM medico WHERE nome LIKE '$nome_medico'"; 
         $crm_consulta = $this->conn->query($sql);
         $result_crm = $crm_consulta->fetch_array()['crm'];
 
-       //buscar cpf paciente
-
-       $sql = "SELECT cpf FROM paciente WHERE nome = '$nome_paciente'"; 
-       $cpf_consulta = $this->conn->query($sql);
-       $result_cpf = $cpf_consulta->fetch_array()['cpf'];
-
+        //buscar cpf paciente
+        $sql = "SELECT cpf FROM paciente WHERE nome LIKE '$nome_paciente'"; 
+        $cpf_consulta = $this->conn->query($sql);
+        $result_cpf = $cpf_consulta->fetch_array()['cpf'];
+        
         $sql = "INSERT INTO consulta (crm_medico, cpf_paciente, horario, data, cnpj_clinica) VALUES ('$result_crm', '$result_cpf', '$horario', '$data', '$clinica')";
 
         return submit($this->conn, $sql);
@@ -87,15 +85,46 @@ class Atendente
     public function alteraPaciente($cpf, $nome, $data_nas, $email, $end, $tel, $senha)
     {   
         $sql = "UPDATE paciente SET nome='$nome', data_nas='$data_nas', email='$email', endereco='$end', telefone='$tel', senha='$senha' WHERE cpf = $cpf";
-       
+        
         return submit($this->conn, $sql);
     }
     
-    public function alteraConsulta($id, $crm_medico, $cpf_paciente, $horario, $data, $clinica)
+    public function alteraConsulta($nome_paciente, $nome_medico, $data_antiga, $horario_antigo, $data_nova, $horario_novo, $nome_medico_novo)
     {
-        $sql = "UPDATE consulta SET crm_medico=$crm_medico, cpf_paciente=$cpf_paciente, horario='$horario', data='$data', clinica=$clinica WHERE id = $id";
+        $cpf_paciente = $this->get_cpf_patient_by_name($nome_paciente);
+        $crm_medico = $this->get_crm_doctor_by_name($nome_medico);
+        $crm_medico_novo = $this->get_crm_doctor_by_name($nome_medico_novo);
+
+        $sql = "UPDATE consulta SET crm_medico='$crm_medico_novo', horario='$horario_novo', data='$data_nova' WHERE crm_medico = '$crm_medico' AND cpf_paciente = '$cpf_paciente' AND horario = '$horario_antigo';";
 
         return submit($this->conn, $sql);
+    }
+
+    public function buscarConsulta($nome_paciente, $nome_medico) {
+        $cpf_paciente = $this->get_cpf_patient_by_name($nome_paciente);
+        $crm_medico = $this->get_crm_doctor_by_name($nome_medico);
+
+        $sql = "SELECT * FROM consulta WHERE cpf_paciente='$cpf_paciente' AND crm_medico='$crm_medico'";
+
+        $result = $this->conn->query($sql);
+
+        // print_r($result->fetch_assoc());
+
+        echo "<h3>Dr(a) $nome_medico </h3><br>";
+        echo "---------------------<br>";
+
+        while ($row = $result->fetch_assoc()) {
+            echo "<b>Horario: </b>" . $row['horario'] . "<br>";
+            $arrayHora = explode("-", $row['data'] );
+            $dia = $arrayHora[2];
+            $mes = $arrayHora[1];
+            $ano = $arrayHora[0];
+            echo "<b>Data: </b>$dia/$mes/$ano<br>";
+            echo "<b>Paciente: </b>" . $nome_paciente . "<br>";
+            echo "---------------------<br>";
+        }
+
+
     }
 
     // DELETA
@@ -177,6 +206,20 @@ class Atendente
                                         {$_POST['iseg17']}, {$_POST['iter17']}, {$_POST['iqua17']}, {$_POST['iqui17']}, {$_POST['isex17']},
                                         {$_POST['iseg18']}, {$_POST['iter18']}, {$_POST['iqua18']}, {$_POST['iqui18']}, {$_POST['isex18']})";
         return $this->conn->query($sql);
+    }
+
+    private function get_cpf_patient_by_name($nome_paciente) {
+        $sql = "SELECT cpf FROM paciente WHERE nome LIKE '$nome_paciente'";
+        $result = $this->conn->query($sql)->fetch_array();
+
+        return $result[0];
+    }
+
+    private function get_crm_doctor_by_name($nome_medico) {
+        $sql = "SELECT crm FROM medico WHERE nome LIKE '$nome_medico'";
+        $result = $this->conn->query($sql)->fetch_array();
+
+        return $result[0];
     }
 
     public function veConsultasPendentes()

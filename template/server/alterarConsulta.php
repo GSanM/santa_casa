@@ -11,7 +11,7 @@
         ini_set('display_startup_errors',1);
         error_reporting(E_ALL);
 
-        require_once "Atendente.php";
+        require_once "../controller/LogicaAtendente.php";
         
         $atendente = new Atendente();
 
@@ -25,7 +25,7 @@
         $nome_medico_novo = $_POST['doctor-name-alterar'];
 
 
-        if($atendente->alterarConsulta($nome_paciente, $nome_medico, $data_antiga, $horario_antigo, $data_nova, $horario_novo, $nome_medico_novo))
+        if($atendente->alteraConsulta($nome_paciente, $nome_medico, $data_antiga, $horario_antigo, $data_nova, $horario_novo, $nome_medico_novo))
             echo "Consulta alterada com sucesso";
         else
             echo "Nao foi possivel alterar consulta";

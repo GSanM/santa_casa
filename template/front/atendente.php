@@ -351,7 +351,7 @@
 						<div id="result-agendar"></div>
 					</div>	
 					
-					<div class="collapse" id="alterar-consulta-div">
+					<div class="collapse" id="alterar-consulta-div" style="width: 400px">
 						<h3>Alterar Consulta</h3>
 						<form name="form_alterarConsulta" id="form_alterarConsulta" onsubmit="return false;" >
 
@@ -379,7 +379,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-dashboard"></i></span>
 							<input id="appointment_day_alterar_antigo" name="appointment_day_alterar_antigo" class="form-control" type="date" required>
-							<input id="appointment_hour_alterar_antigo" name="appointment_hour_alterar_antigo" class="form-control" type="time" required>
+							<input list="hours" id="appointment_hour_alterar_antigo" name="appointment_hour_alterar_antigo" class="form-control" type="time" required>
 						</div>
 
 						<h3>Insira o novo horário</h3>
@@ -387,7 +387,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-dashboard"></i></span>
 							<input id="appointment_day_alterar_novo" name="appointment_day_alterar_novo" class="form-control" type="date" required>
-							<input id="appointment_hour_alterar_novo" name="appointment_hour_alterar_novo" class="form-control" type="time" required>
+							<input list="hours" id="appointment_hour_alterar_novo" name="appointment_hour_alterar_novo" class="form-control" type="time" required>
 							<input list="doctors" id="doctor-name-alterar" class="form-control" type="text" name="doctor-name-alterar" placeholder="Nome do Médico" required>
 						</div>
 
