@@ -7,7 +7,7 @@
     require_once "../controller/LogicaAtendente.php";
     require_once "../model/connectDB.php";
 
-    $lpaciente = new LogicaPaciente();
+    $lpaciente = new Paciente();
     $atendente = new Atendente();
     
     $conn = connectToDB('root', 'Dijkstra');
@@ -15,9 +15,8 @@
     
     $nome_paciente = $_POST['patient-name-ver-agenda'];
 
-    $crm = $atendente->get_crm_doctor_by_name($nome_medico);
+    $cpf = $atendente->get_cpf_patient_by_name($nome_paciente);
 
-    $lMedico->veAgenda(preg_replace('/[^A-Za-z0-9]/', '', $crm));
-
+    $lpaciente->veAgenda(preg_replace('/[^A-Za-z0-9]/', '', $cpf));
 
 ?>

@@ -440,6 +440,7 @@
 								<button type="submit" class="btn btn-default" id="btnVerAgendaPaciente" onclick="ajaxPost('../model/verAgendaPaciente.php', '#result-verAgendaPaciente')">Buscar</button>
 							</div>
 						</form>
+						<br><br>
 						<div id="result-verAgendaPaciente"></div>
 
 				</div>
