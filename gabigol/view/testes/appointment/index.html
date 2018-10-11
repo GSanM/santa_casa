@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br" >
+
+<head>
+	<meta charset="UTF-8">
+	<title>Make an appointment</title>
+  
+  
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Playfair+Display:700,900|Source+Sans+Pro:400,600,700'>
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<div class="wrapper">
+	
+	<div id="calendar">
+		<div>
+			<div class="overlay">
+				<h1>Agendamento</h1>
+			</div>
+		</div>
+		<div class="monthChange"></div>
+	</div>
+
+	<div class="inner-wrap">
+		
+		<form action="agendar.php" method="POST">
+			<div class="form-name collapse">
+				<input type="text" name="name" id="name" value="José">
+			</div>
+			
+			<div class="form-name">
+				<input type="email" name="email" id="email">
+				<label for="email">Seu email</label>
+			</div>
+			
+			<input type="hidden" name="day" id="day" value="">
+			<input type="hidden" name="month" id="month" value="">
+			<input type="hidden" name="year" id="year" value="">
+			<input type="hidden" name="hour" id="hour" value="">
+
+			<button type="submit" class="request disabled">
+				Requisitar Agendamento <br class="break">
+				<span>em</span>
+				<span class="day"></span>
+				<span>às</span>
+				<span class="time"></span>
+				<div class="sendRequest"></div>
+			</button>
+			
+		</form>
+
+	</div>
+
+	<div class='timepicker'>
+		<div class="owl">
+			<div>08:00</div>
+			<div>09:00</div>
+			<div>10:00</div>
+			<div>11:00</div>
+			<div>12:00</div>
+			<div>13:00</div>
+			<div>14:00</div>
+			<div>15:00</div>
+			<div>16:00</div>
+			<div>17:00</div>
+			<div>18:00</div>
+		</div>
+		<div class="fade-l"></div>
+		<div class="fade-r"></div>
+	</div>
+    
+</div>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.2/owl.carousel.min.js'></script>
+		<script  src="js/index.js"></script>
+
+	</body>
+
+</html>

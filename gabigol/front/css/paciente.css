@@ -1,0 +1,114 @@
+* {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+body {
+    background-color: whitesmoke !important;
+}
+
+/*Borda ao redor do form*/
+.border {
+    border: 0px solid rgb(81, 231, 231);
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 15px;
+    padding-top:0;
+    width: 50%
+}
+
+/*Botao cadastro*/
+button#ver-perfil, button#agendar, button#sair, button#minhas-consultas {
+    height: 60px;
+    width: 270px;
+    background-color: rgb(253, 83, 83);
+    color: white;
+    border-radius: 5px;
+    font-size: 23px;
+    margin-right: 10px;
+    font-weight: bold;
+    border: 0;
+}
+
+input#med-name, input#appointment_day, input#appointment_hour {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+input#name {
+    
+    margin-bottom: 5px;
+}
+
+.input-group {
+    margin-bottom: 5px;
+}
+
+input.form-control {
+     
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+/*Header*/
+img {
+    display: inline;
+    margin-bottom: 20px;
+}
+
+.header {
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+
+.header h1 {
+    font-family: 'Lobster', cursive;
+    display: inline;
+}
+
+h1#h1-paciente {
+    display:inline;
+    font-size: 25px;
+}
+
+/*--------------*/
+
+.btn.btn-default:hover {
+    background-color: rgb(173, 52, 52);
+    color: white;
+}
+
+.btn.btn-default {
+    border-radius: 20px;
+    border: 0;
+    background-color: rgb(253, 83, 83);
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+div#root-buttons {
+    margin: auto;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+tr:hover {
+    cursor: pointer;
+}

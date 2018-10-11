@@ -1,0 +1,237 @@
+/*Fontes
+
+font-family: 'Exo', sans-serif;
+font-family: 'Abril Fatface', cursive;
+font-family: 'Archivo Narrow', sans-serif;
+font-family: 'Amatic SC', cursive;
+font-family: 'Anton', sans-serif;
+font-family: 'Lobster', cursive;
+font-family: 'Josefin Sans', sans-serif;
+
+*/
+* {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+body {
+    
+    background-image: url("../media/telemarketista.png");
+    background-size: 50%;
+    background-position: right 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: whitesmoke !important;
+}
+
+/* Inputs */
+div.input-group {
+    margin-bottom: 5px;
+}
+
+
+input.form-control {
+     
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+input#name, input#age, input#crm, input#appointment_day, input#appointment_day_alterar_antigo, input#appointment_day_alterar_novo, input#appointment_hour_alterar_novo {
+    
+    margin-bottom: 5px;
+}
+
+input#appointment_hour_start_all, input#appointment_hour_start_mon, input#appointment_hour_start_tue, input#appointment_hour_start_wed, input#appointment_hour_start_thu, input#appointment_hour_start_fri {
+    
+    width: 20%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-right: 20px;
+}
+
+input#appointment_hour_end_all, input#appointment_hour_end_mon, input#appointment_hour_end_tue, input#appointment_hour_end_wed, input#appointment_hour_end_thu, input#appointment_hour_end_fri {
+    
+    width: 20%;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+/*-----------------------------------------*/
+
+/*Borda ao redor do form*/
+.border {
+    border: 0px solid rgb(81, 231, 231);
+    border-radius: 5px;
+    border-top-left-radius: 0%;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 15px;
+    padding-top:0;
+    width: 50%;
+}
+
+.not-border {
+    border: 0px solid rgb(81, 231, 231);
+    border-radius: 5px;
+    border-top-left-radius: 0%;
+    margin: 0 auto;
+    margin-left: 0;
+    margin-top: 20px;
+    padding: 15px;
+    padding-top:0;
+}
+
+.border-medico {
+    border: 0px solid rgb(81, 231, 231);
+    border-radius: 5px;
+    padding: 15px;
+}
+
+/*Botao cadastro*/
+button#cadastrar, button#agenda, button#sair {
+    height: 60px;
+    width: 270px;
+    background-color: rgb(76, 231, 140);
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 23px;
+    margin-right: 10px;
+    border: 0;
+}
+
+button#agendar, button#ver-agenda, button#alterar-consulta, button#ver-agenda-medico, button#ver-agenda-paciente, button#confirmar-consulta {
+    height: 60px;
+    width: 150px;
+    background-color: rgb(76, 231, 140);
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 10px;
+    border: 0;
+}
+
+/*Radio-buttons*/
+div.btn-group {
+    margin-top: 20px;
+}
+
+div#pac-doc {
+    width: auto;
+    margin-left: 31%;
+    margin-right: 29%;
+    text-align: center;
+}
+
+input[type="radio"] {
+    margin: 0;
+    visibility: hidden;
+}
+
+input[type=radio]:checked + span {
+    color: black;
+}
+
+/*----------------------------------------*/
+
+.btn.btn-default:hover {
+    background-color: rgb(50, 156, 94);
+}
+
+.btn.btn-default {
+    border-radius: 20px;
+    border: 0;
+    background-color: rgb(76, 231, 140);
+    color: white;
+    font-weight: bold;
+}
+
+div#border-agenda {
+    border-top-right-radius: 0;
+}
+
+div.submit-button {
+    margin-top: 10px;
+    text-align: center;
+}
+
+div#submit-agenda {
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;   
+}
+
+/*Header*/
+.header {
+    margin-top: 10px;
+}
+
+.header img {
+    display: inline;
+}
+
+.header h1 {
+    font-family: 'Lobster', cursive;
+    display: inline;
+}
+
+/*--------------*/
+
+input.hour-inline {
+    display: inline;
+}
+
+span.span-ate {
+    float: left;
+    margin-top: 10px;
+}
+
+span#qua {
+    padding-right: 7px;
+}
+
+button#show_all_days {
+    margin-bottom: 10px;
+    
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*END OF MODAL*/

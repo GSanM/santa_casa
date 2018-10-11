@@ -437,7 +437,7 @@
 							</div>
 
 							<div class="submit-button" id="submit-agenda">
-								<button type="submit" class="btn btn-default" id="btnVerAgendaPaciente" onclick="ajaxPost('../model/verAgendaPaciente.php', '#result-verAgendaPaciente')">Buscar</button>
+								<button type="submit" class="btn btn-default" id="btnVerAgendaPaciente" onclick="ajaxPost('../server/verAgendaSimplificadaPaciente.php', '#result-verAgendaPaciente')">Buscar</button>
 							</div>
 						</form>
 						<div id="result-verAgendaPaciente"></div>
