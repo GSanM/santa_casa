@@ -14,9 +14,9 @@ class Paciente
 
     public function veAgenda($cpf)
     {
-        $sql = "SELECT crm_medico, horario, data, clinica FROM consulta WHERE cpf_paciente = $cpf";
-
+        $sql = "SELECT crm_medico, horario, data, cnpj_clinica FROM consulta WHERE cpf_paciente = $cpf";
         $result = $this->conn->query($sql);
+
         if ($result->num_rows > 0)
         {   
             echo '  <head>
@@ -37,7 +37,7 @@ class Paciente
                 $data =  $row['data'];
                 $hora =  $row['horario'];
                 $medico = $row['crm_medico'];
-                $clinica = $row['clinica'];
+                $clinica = $row['cnpj_clinica'];
 
                 echo "<tbody class=\"table-hover\">
                         <tr>
