@@ -26,19 +26,22 @@ class Agendar extends CI_Controller {
             $this->load->view('login');
             return;
         }
-        print_r($_POST);
+        
+    
 
         $naoDigitouNomeClinica = $_POST['iClinica'] == "" ? 1:0;
         $naoDigitouHorario = $_POST['iHorario'] == "" ? 1:0;
+        $digitouData = $_POST['iData'] == "" ? 0:1;
 
         if($naoDigitouHorario and $naoDigitouNomeClinica)
             $dados['query'] = $this->Paciente_model->get_clinicas_por_nome_medico($_POST['iMedico']);
-        elseif($naoDigitouHorario)
-            $dados['query'] = $this->Paciente_model->get_horarios_do_medico();
-        else {
+        elseif($naoDigitouHorario and $digitouData)
+            $dados['query'] = $this->Paciente_model->get_horarios_do_medico($_POST['iMedico'], $_POST['iClinica'], $_POST['iData']);
+        elseif(!$naoDigitouHorario and !$naoDigitouNomeClinica and $digitouData) {
             // inserir consulta
-            echo "";
+            $dados['query'] = $this->Paciente_model->inserir_agendamento($_SESSION['cpf'], $_POST['iMedico'], $_POST['iClinica'], $_POST['iData'], $_POST['iHorario']);
         }
+
         $this->load->view('paciente/agendar', $dados);
     }
 }

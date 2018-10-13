@@ -117,7 +117,77 @@ class Paciente_model extends CI_Model {
         return $queryMerged;
     }
 
-    public function get_horarios_do_medico($nome_medico) {
+    public function get_horarios_do_medico($nome_medico, $nome_clinica, $data_consulta) {
+        $weekDay      = $this->get_week_day_by_date($data_consulta);
+        $crm_medico   = $this->get_crm_doctor_by_name($nome_medico);
+        $cnpj_clinica = $this->get_cnpj_clinic_by_name($nome_clinica);
+
+        $columns = $weekDay."8,".$weekDay."9,".$weekDay."10,".$weekDay."11,".$weekDay."12,".$weekDay."13,".$weekDay."14,".$weekDay."15,".$weekDay."16,".$weekDay."17,".$weekDay."18";
+        $this->db->select("$columns");
+        $this->db->from('medico');
+        $this->db->join('medico_clinica', "medico_clinica.crm_medico = medico.crm");
+        $this->db->where("medico_clinica.cnpj_clinica = '$cnpj_clinica' AND medico_clinica.crm_medico = '$crm_medico'");
+
+        $query = $this->db->get()->result_array();
+
+        $queryMerged = array_merge($query, $this->get_clinicas_por_nome_medico($nome_medico));
+
+        return ($queryMerged);
+    }
+
+    public function inserir_agendamento($cpf_paciente, $nome_medico, $nome_clinica, $data, $horario) {
+        $crm_medico = $this->get_crm_doctor_by_name($nome_medico);
+        $cnpj = $this->get_cnpj_clinic_by_name($nome_clinica);
+
+        $dadosConsulta = array(
+            'crm_medico'   => $crm_medico,
+            'cpf_paciente' => $cpf_paciente,
+            'horario'      => $horario,
+            'data'         => $data,
+            'cnpj_clinica' => $cnpj
+        );
+
+        $this->db->insert('consulta_pendente', $dadosConsulta);
+    }
+
+    private function get_week_day_by_date($data_consulta) {
+        $convertWeekDay = array('Mon' => 'seg',
+                                'Tue' => 'ter',
+                                'Wed' => 'qua',
+                                'Thu' => 'qui',
+                                'Fri' => 'sex',
+                                'Sat' => 'NaN',
+                                'Sun' => 'NaN');
+    
+        return $convertWeekDay[date('D', strtotime($data_consulta))];
+    }
+
+    private function get_cnpj_clinic_by_name($nome_clinica) {
+        $this->db->select('cnpj');
+        $this->db->from('clinica');
+        $this->db->where("nome LIKE '$nome_clinica'");
+
+        $row = $this->db->get()->result()[0];
+
+        if(isset($row)){
+            
+            return $row->cnpj;
+        }
+            
+    }
+
+    private function get_crm_doctor_by_name($nome_medico) {
+        $this->db->select('crm');
+        $this->db->from('medico');
+        $this->db->where("nome LIKE '$nome_medico'");
+
+        $query = $this->db->get();
+
+        if($query->num_rows() > 0)
+            $row = $query->result()[0];
+
+        if(isset($row))
+            return $row->crm;
 
     }
 

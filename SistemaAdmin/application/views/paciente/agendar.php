@@ -9,12 +9,18 @@
 
 <?php
     if(isset($query)) {
-        
+        $nomeMedicos = array();
         foreach($query as $row) {
             if(isset($row['nome_clinica_por_medico']))
                 $queryClinicasPorMedico[] = $row;
-            else
+            elseif(isset($row['seg8']) || isset($row['ter8']) || isset($row['qua8']) || isset($row['qui8']) || isset($row['sex8']))
+                $queryHorarios[] = $row;
+            else {
                 $queryMedicos[] = $row;
+
+                if(!in_array($row['nome_medico'], $nomeMedicos))
+                    $nomeMedicos[] = $row['nome_medico'];
+            }
         }
     }
 ?>
@@ -33,7 +39,7 @@
     <tbody id="myTable">
     <?php foreach($queryMedicos as $row):?>
                 <tr class="dialog clickable linha-selecionada" id="modal-click">                    
-                    <td><a href="<?php echo base_url("paciente/horariomedico")?>"> <?php echo $row['nome_medico']?></a></td>
+                    <td><?php echo $row['nome_medico']?></a></td>
                     <td><?php echo $row['especialidade']?></td>
                     <td><?php echo $row['nome_clinica']?></td>
                 </tr>
@@ -43,11 +49,12 @@
 </table>
 
 <form id="formAgendar" action="<?php echo base_url('paciente/agendar/envio')?>" method="POST">
+    <div style="margin: 0 auto; width:70%"> 
     <label>Médico</label>
-    <input id="iMedico" name="iMedico" list="lista_medicos" type="text" placeholder="Digite o nome do Médico" onblur="getClinicasMedico(this)">
+    <input id="iMedico" name="iMedico" list="lista_medicos" type="text" placeholder="Digite o nome do Médico" onblur="getClinicasMedico()">
     <datalist id="lista_medicos">
-        <?php foreach($queryMedicos as $row):?>
-        <option value="<?php echo $row['nome_medico']?>">
+        <?php foreach($nomeMedicos as $row):?>
+        <option value="<?php echo $row?>">
         <?php endforeach?>
     </datalist>
     <br><br><br>
@@ -62,23 +69,28 @@
     <br><br><br>
 
     <label>Data</label>
-    <input id="iData" name="iData" type="date" placeholder="Digite a data">
+    <input id="iData" name="iData" type="date" placeholder="Digite a data" onblur="getHorariosMedico()">
     <br><br><br>
+
 
     <label>Horário</label>
     <input id="iHorario" name="iHorario" list="lista_horarios" type="text" placeholder="Digite o horário">
     <datalist id="lista_horarios">
-        <?php foreach($queryMedicos as $row):?>
-        <option value="<?php echo $row['nome_medico'] ?>">
+        <?php foreach($queryHorarios[0] as $key=>$value):?>
+        <option value="<?php echo ($value)? get_formatted_time($key):"" ?>">
         <?php endforeach?>
+        <?php function get_formatted_time($value){
+            if(strlen($value) == 4)
+                return $value[3] + ":00";
+            if(strlen($value) == 5)
+                return $value[3].$value[4].":00";
+        }?>
     </datalist>
     <br><br><br>
 
-
-
-
-
-    <button class="btn" style="align-content: center;">Agendar</button>
+    <button class="btn" >Agendar</button>
+    <div class="btn" onclick="clearForm()">Limpar</div>
+    </div>
 </form>
 
 <?php require_once ('application/views/footer.php')?>
