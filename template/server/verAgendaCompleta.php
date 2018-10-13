@@ -26,10 +26,10 @@
 
     echo '<table>
             <tr>
-              <th style="text-align: center">DATA</th>
-              <th style="text-align: center">HORÁRIO</th>
-              <th style="text-align: center">PACIENTE</th>
-              <th colspan="2" style="text-align: center">AÇÕES</th>
+                <th style="text-align: center">DATA</th>
+                <th style="text-align: center">HORÁRIO</th>
+                <th style="text-align: center">PACIENTE</th>
+                <th colspan="2" style="text-align: center">AÇÕES</th>
             </tr>';
     $count = 0;
     foreach($lista_consultas as $consulta) {
@@ -84,7 +84,7 @@
         echo "<button type=\"submit\" class=\"btn btn-default\" id=\"btn_salvar_diagnostico$count\" style=\"margin-bottom: 10px;\" onclick=\"ajaxPost('../server/diagnosticarPaciente.php', '#resultado-diagnostico')\">Salvar</button></td></tr>";
         
     }
-         
+    
     echo '</table>';
     echo '</form>';
 
@@ -94,54 +94,6 @@
     // #######################################################################################
 
     function getListaConsultasMedico($nome_medico_consulta) {
-               $lista_consultas = array();
-                /* Esta funcado serve para carregar os dados do Medico.xml */
-                $dom_xml = new DOMDocument();
-
-                /* Para formatar o arquivo XML */
-                $dom_xml->preserveWhiteSpace = false;
-                $dom_xml->formatOutput = true;
-                
-                /* Carregando o arquivo .xml */
-                $dom_xml->load("database/Consultas.xml");
-
-                /* Pega todos os elementos com a TAG "Medico" */
-                $consultas = $dom_xml->getElementsByTagName("Consulta");
-                foreach( $consultas as $consulta ) {
-                    $nomes_medicos = $consulta->getElementsByTagName("nome-medico");
-                    $nome_medico = $nomes_medicos->item(0)->nodeValue;
-
-                    if($nome_medico_consulta == $nome_medico) {
-                        $nomes_paciente = $consulta->getElementsByTagName("nome-paciente");
-                        $nome_paciente = $nomes_paciente->item(0)->nodeValue;
-
-                        $dias_semanas = $consulta->getElementsByTagName("data");
-                        $data = $dias_semanas->item(0)->nodeValue;
-
-                        $horarios = $consulta->getElementsByTagName("horario");
-                        $horario = $horarios->item(0)->nodeValue;
-
-                        $receitas = $consulta->getElementsByTagName("receita");
-                        $receita = $receitas->item(0)->nodeValue;
-
-                        $diagnosticos = $consulta->getElementsByTagName("diagnostico");
-                        $diagnostico = $diagnosticos->item(0)->nodeValue;
-
-                        /* Criando uma instancia de um Novo consulta */
-                        $novo_consulta = new Consulta($nome_paciente, $nome_medico, $data, $horario);
-
-                        /* Inserindo os dados do Novo consulta */
-                        $novo_consulta->nome_paciente = $nome_paciente;
-                        $novo_consulta->nome_medico = $nome_medico;
-                        $novo_consulta->data = $data;
-                        $novo_consulta->horario = $horario;
-                        $novo_consulta->receita = $receita;
-                        $novo_consulta->diagnostico = $diagnostico;
-
-                        $lista_consultas[] = $novo_consulta;
-                    }
-                }
-                return $lista_consultas;
     }
     
     function ordenarDataConsulta($array) {

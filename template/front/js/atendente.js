@@ -183,3 +183,11 @@ $(document).ready(function(){
 		$("#week_days").collapse('toggle');
 	});
 });
+
+function confirmacaoReceita(){
+	alert("Paciente Receitado com Sucesso!!")
+}
+
+function confirmacaoDiagnostico(){
+	alert("Paciente Diagnosticado com Sucesso!!")
+}

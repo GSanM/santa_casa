@@ -68,10 +68,11 @@ tr {
 }
  
 tr:hover td {
-  /*background:#4E5066;*/
+  /*background:#4E5066;
   background: rgb(61, 55, 55);
   color:#FFFFFF;
   border-top: 1px solid #22262e;
+  */
 }
  
 tr:first-child {
@@ -87,7 +88,8 @@ tr:nth-child(odd) td {
 }
  
 tr:nth-child(odd):hover td {
-  background:rgb(61, 55, 55);
+  /*
+  background:rgb(61, 55, 55);*/
 }
 
 tr:last-child td:first-child {
