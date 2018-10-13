@@ -100,7 +100,11 @@ class Paciente
         $cpf_consulta = $this->conn->query($sql);
         $result_cpf = $cpf_consulta->fetch_array()['cpf'];
 
-        $sql = "INSERT INTO consulta_pendente (crm_medico, cpf_paciente, horario, data, cnpj_clinica) VALUES ('$result_crm', '$result_cpf', '$horario', '$data', '$clinica')";
+        $sql = "SELECT cnpj FROM clinica WHERE nome = '$clinica'"; 
+        $cnpj_consulta = $this->conn->query($sql);
+        $result_cnpj = $cnpj_consulta->fetch_array()['cnpj'];
+
+        $sql = "INSERT INTO consulta_pendente (crm_medico, cpf_paciente, horario, data, cnpj_clinica) VALUES ('$result_crm', '$result_cpf', '$horario', '$data', '$result_cnpj')";
 
         return submit($this->conn, $sql);
     }

@@ -46,7 +46,7 @@ class LogicaMedico
     public function alteraPerfil($crm, $cpf, $nome, $data_nas, $email, $end, $tel, $especialidade, $senha, $cnpj_clinica)
     {
         $sql = "UPDATE medico SET nome=$nome, data_nas=$data_nas, email=$email, endereco=$end, telefone=$tel, especialidade=$especialidade, senha=$senha, cnpj_clinica=$cnpj_clinica WHERE crm = $crm";
-       
+        
         return submit($this->conn, $sql);
     }
 
@@ -69,7 +69,7 @@ class LogicaMedico
                             <th class="text-left">Clínica</th>
                         </tr>
                     </thead>';
-    
+            $count = 0;
             while($row = $result->fetch_assoc())
             {
                 $data =  $row['data'];

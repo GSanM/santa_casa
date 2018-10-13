@@ -176,24 +176,21 @@
 								<input id="appointment_hour" name="appointment_hour" class="form-control" type="time" required>
 							</div>
 
-							<div class="submit-button" id="submit-agenda">
-								<button type="submit" class="btn btn-default" id="btnAgendar" onclick="ajaxPost('../server/agendarPendente.php', '#result-agendar')">Agendar</button>
-							</div>
-						</form>
-
-
-						<!--Horário-->
-						<div class="collapse" id="med-disp">
+							<!--Clïnica-->
 							<div class="input-group">
-								<span class="input-group-addon"><i class="glyphicon glyphicon-dashboard"></i></span>
-								<input id="appointment_hour" name="appointment_hour" class="form-control" type="time" required>
+								<span class="input-group-addon"><i class="glyphicon glyphicon-plus-sign"></i></span>
+								<input list="clinicas" id="clinica" class="form-control" type="text" name="clinica" placeholder="Nome da Clínica" required>
+								<?php
+									require_once "../model/getClinicas.php";
+								?>
 							</div>
 
 							<div class="submit-button" id="submit-agenda">
 								<button type="submit" class="btn btn-default" id="btnAgendar" onclick="ajaxPost('../server/agendarPendente.php', '#result-agendar')">Agendar</button>
 							</div>
-						</div>
-						
+
+						</form>	
+
 						<div id="result-agendar"></div>
 					</div>
 				</div>

@@ -396,7 +396,7 @@
 						</div>
 
 						</form>
-						<div id="result-agendar-alterar">CHECK</div>
+						
 					</div>
 					
 					<!--Resultados das consultas pendentes-->
