@@ -63,14 +63,24 @@ class Cadastro extends CI_Controller {
 			 * Aqui dentro voce coloca a funcao que vai abrir o arquivo template/front/index.html 
 			 * e alterar o nome Santa Casa para o nome da clinica (está na variável $nomeDaClinica)
 			 */
+			
+			$caminhoAteOArquivo = getcwd() . "/template/front/index.html";
+			$this->change_name($caminhoAteOArquivo, $nomeDaClinica);
+
 			#############################
 
 			// chama a página que mostra "clinica cadastrada com sucesso"
 			$this->cadastrado_sucesso();
 		}
 
-		
 	}
+
+	private function change_name($caminhoAteOArquivo, $nomeDaClinica) {
+		// lógica
+	}
+
+
+
 
 	/**
 	 * Método para chamar a View de 'Cadastrado com sucesso'
