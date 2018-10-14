@@ -60,7 +60,7 @@ class Cadastro extends CI_Controller {
 		if($this->xcopy($source, $dest)) {
 			$source = str_replace("/template/", "", $source);
 			$caminhoAteOArquivo = "$source/$nomeDaClinica/front/index.html";
-
+			echo $caminhoAteOArquivo;
 			$this->change_name($caminhoAteOArquivo, $nomeDaClinica);
 
 			// chama a página que mostra "clinica cadastrada com sucesso"
