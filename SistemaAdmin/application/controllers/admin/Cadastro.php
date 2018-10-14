@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require_once "../../helpers/simple_html_dom.php";
+require_once "simple_html_dom.php";
 /**
  * Controlador de Cadastro
  *
@@ -50,18 +50,18 @@ class Cadastro extends CI_Controller {
 		$this->Clinica_model->inserir_registro();
 
 		// Duplicar os arquivos
-
-		$nomeDaClinica = str_replace(" ", "_", $_POST['txtNomeClinica']);
+		$nomeDaClinica = $_POST['txtNomeClinica'];
+		$nomeDaClinicaSemEspaco = str_replace(" ", "_", $_POST['txtNomeClinica']);
 		$source = getcwd() . "/template/";
-		$dest   = getcwd() . "/$nomeDaClinica/"; 
+		$dest   = getcwd() . "/$nomeDaClinicaSemEspaco/"; 
 
 		$dest   = str_replace("/SistemaAdmin", "", $dest);
 		$source = str_replace("/SistemaAdmin", "", $source);
 		
 		if($this->xcopy($source, $dest)) {
 			$source = str_replace("/template/", "", $source);
-			$caminhoAteOArquivo = "$source/$nomeDaClinica/front/index.html";
-			echo $caminhoAteOArquivo;
+			$caminhoAteOArquivo = "$source/$nomeDaClinicaSemEspaco/front/index.html";
+		
 			$this->change_name($caminhoAteOArquivo, $nomeDaClinica);
 
 			// chama a página que mostra "clinica cadastrada com sucesso"

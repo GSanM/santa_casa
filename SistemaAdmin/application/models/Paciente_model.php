@@ -170,10 +170,8 @@ class Paciente_model extends CI_Model {
         $row = $this->db->get()->result()[0];
 
         if(isset($row)){
-            
             return $row->cnpj;
-        }
-            
+        } 
     }
 
     private function get_crm_doctor_by_name($nome_medico) {
