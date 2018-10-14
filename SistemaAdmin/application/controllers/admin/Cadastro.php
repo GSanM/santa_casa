@@ -58,8 +58,18 @@ class Cadastro extends CI_Controller {
 		$source = str_replace("/SistemaAdmin", "", $source);
 		
 		if($this->xcopy($source, $dest)) {
+			######### Gabriel ###########
+			/**
+			 * Aqui dentro voce coloca a funcao que vai abrir o arquivo template/front/index.html 
+			 * e alterar o nome Santa Casa para o nome da clinica (está na variável $nomeDaClinica)
+			 */
+			#############################
+
+			// chama a página que mostra "clinica cadastrada com sucesso"
 			$this->cadastrado_sucesso();
 		}
+
+		
 	}
 
 	/**
