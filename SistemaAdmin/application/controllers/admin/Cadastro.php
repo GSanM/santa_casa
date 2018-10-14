@@ -75,11 +75,13 @@ class Cadastro extends CI_Controller {
 
 	}
 
+	// Muda nome da clínica, porém, "desformata" o arquivo html
 	private function change_name($caminhoAteOArquivo, $nomeDaClinica) {
 
-		$html = file_get_html($caminhoAteOArquivo);
-
+		$html = str_get_html(file_get_contents($caminhoAteOArquivo));
+	
 		$html->find('h1', 0)->innertext = $nomeDaClinica;
+		file_put_contents($caminhoAteOArquivo, $html);
 	}
 
 
