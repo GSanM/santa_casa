@@ -76,7 +76,10 @@ class Cadastro extends CI_Controller {
 	}
 
 	private function change_name($caminhoAteOArquivo, $nomeDaClinica) {
-		// lógica
+
+		$html = file_get_html($caminhoAteOArquivo);
+
+		$html->find('h1', 0)->innertext = $nomeDaClinica;
 	}
 
 
