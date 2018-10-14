@@ -1,0 +1,32 @@
+<html>
+<head>
+<script>
+function toggle() {
+    if( document.getElementById("hidethis").style.display=='none' ){
+        document.getElementById("hidethis").style.display = '';
+    }else{
+        document.getElementById("hidethis").style.display = 'none';
+    }
+}
+</script>
+</head>
+<body>
+
+<span onclick="toggle();">toggle</span><br /><br />
+
+<table border="1">
+    <tr>
+        <td>Always visible</td>
+    </tr>
+
+    <tr id="hidethis" style="">
+        <td>Hide this</td>
+    </tr>
+
+    <tr>
+        <td>Always visible</td>
+    </tr>
+</table>
+
+</body>
+</html>

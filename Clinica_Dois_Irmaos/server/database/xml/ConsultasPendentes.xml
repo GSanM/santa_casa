@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<Consultas>
+  <Consulta>
+    <nome-paciente>Mario Luiz</nome-paciente>
+    <nome-medico>Ricardo Stroke</nome-medico>
+    <data>2018-12-10</data>
+    <horario>18:10</horario>
+    <receita/>
+    <diagnostico/>
+  </Consulta>
+</Consultas>

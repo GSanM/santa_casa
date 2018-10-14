@@ -50,7 +50,7 @@ class Cadastro extends CI_Controller {
 
 		// Duplicar os arquivos
 
-		$nomeDaClinica = $_POST['txtNomeClinica'];
+		$nomeDaClinica = str_replace(" ", "_", $_POST['txtNomeClinica']);
 		$source = getcwd() . "/template/";
 		$dest   = getcwd() . "/$nomeDaClinica/"; 
 
@@ -58,16 +58,10 @@ class Cadastro extends CI_Controller {
 		$source = str_replace("/SistemaAdmin", "", $source);
 		
 		if($this->xcopy($source, $dest)) {
-			######### Gabriel ###########
-			/**
-			 * Aqui dentro voce coloca a funcao que vai abrir o arquivo template/front/index.html 
-			 * e alterar o nome Santa Casa para o nome da clinica (está na variável $nomeDaClinica)
-			 */
-			
-			$caminhoAteOArquivo = getcwd() . "/template/front/index.html";
-			$this->change_name($caminhoAteOArquivo, $nomeDaClinica);
+			$source = str_replace("/template/", "", $source);
+			$caminhoAteOArquivo = "$source/$nomeDaClinica/front/index.html";
 
-			#############################
+			$this->change_name($caminhoAteOArquivo, $nomeDaClinica);
 
 			// chama a página que mostra "clinica cadastrada com sucesso"
 			$this->cadastrado_sucesso();
