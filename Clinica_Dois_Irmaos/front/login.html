@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Santa Casa</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" href="media/Icons/png/asterisk.png">
+
+        <link rel="stylesheet" type="text/css" media="screen" href="css/login.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.min.css" />
+
+        <!--Fontes-->
+		<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Amatic+SC|Archivo+Narrow|Exo|Anton|Josefin+Sans|Lobster" rel="stylesheet">  
+		<!--======-->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script type="text/javascript" src="js/post.js"></script>
+        <script src="js/atendente.js"></script>
+        <script src="js/login.js"></script>
+
+    </head>
+    <body>
+        <div class="container">
+            <h1>Login</h1>
+            <form name="form-login" action="../model/login.php" method="POST">
+                <div class="border">
+                    <img src="media/Icons/png/computer.png" class="center">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="cpf" class="form-control" maxlength="14" type="text" autocomplete="off" name="cpf" placeholder="CPF" onkeypress="aplicaMascara(this, cpfMask)" required>
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input class="form-control" type="password" id="password" name="password" placeholder="Senha" required>
+                    </div>
+
+                    <!--Radio Buttons-->
+                    <div class="btn-group" name="radio-pac-doc" id="pac-doc">
+                        <label class="btn btn-default form-check-label" style="font-weight: bold; width: 100px;">
+                            <input class="form-check-input" type="radio" name="pac_doc" value="patient" id="patient" checked>
+                            <span class="pac-doc-span" style="margin-left: -10px;">Paciente</span>
+                        </label>
+                    
+                        <label class="btn btn-default form-check-label" style="font-weight: bold; width: 100px;">
+                            <input class="form-check-input" type="radio" name="pac_doc" value="doctor" id="doctor">
+                            <span class="pac-doc-span" style="margin-left: -22px;">Médico</span>
+                        </label>
+
+                        <label class="btn btn-default form-check-label" style="font-weight: bold; width: 100px;">
+                            <input class="form-check-input" type="radio" name="pac_doc" value="clerk" id="clerk">
+                            <span class="pac-doc-span" style="margin-left: -22px;">Atendente</span>
+                        </label>
+					</div>	
+						
+                    <div class="submit-button">
+                        <button type="submit" class="btn btn-default">Login</button>
+                    </div>
+                    <div id="cadastrar-se">
+                        <a id="cadastrar-se" href="registro.html">Cadastrar-se</a>
+                    </div>
+                </div>   
+            </form> 
+        </div>
+        
+    </body>
+</html>
